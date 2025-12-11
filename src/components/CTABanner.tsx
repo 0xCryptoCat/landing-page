@@ -98,7 +98,7 @@ export function CTABanner() {
             onClick={(e) => e.preventDefault()}
           >
             <img 
-              src="/AppStore.webp" 
+              src={`${import.meta.env.BASE_URL}AppStore.webp`}
               alt="Download on the App Store" 
               className="h-12 w-auto"
             />
@@ -109,7 +109,7 @@ export function CTABanner() {
             onClick={(e) => e.preventDefault()}
           >
             <img 
-              src="/GooglePlay.webp" 
+              src={`${import.meta.env.BASE_URL}GooglePlay.webp`}
               alt="Get it on Google Play" 
               className="h-12 w-auto"
             />

@@ -51,7 +51,7 @@ export function FlyingBees({
           renderer: 'svg',
           loop: true,
           autoplay: true,
-          path: '/Honeybee.json',
+          path: `${import.meta.env.BASE_URL}Honeybee.json`,
           rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
           }
@@ -158,7 +158,7 @@ export function SectionBee({ delay = 0 }: SectionBeeProps) {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/Honeybee.json',
+        path: `${import.meta.env.BASE_URL}Honeybee.json`,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice'
         }
