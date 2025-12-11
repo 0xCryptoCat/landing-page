@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font */
+@font-face {
+  font-family: 'Honey';
+  src: url('/fonts/honey_jar/TfFancy Free Trial.woff2') format('woff2'),
+       url('/fonts/honey_jar/TfFancy Free Trial.woff') format('woff'),
+       url('/fonts/honey_jar/TfFancy.otf') format('opentype'),
+       url('/fonts/honey_jar/TfFancy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-honey {
+  font-family: 'Honey', 'Comic Sans MS', cursive, system-ui, sans-serif !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Comfortaa', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animation delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+
+/* Hexagon pattern background - subtle */
+.hexagon-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffc107' fill-opacity='0.12'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Hexagon pattern background - strong/visible */
+.hexagon-pattern-strong {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffc107' fill-opacity='0.5'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Gradient text for titles */
+.text-gradient-title {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 35%, #F59E0B 50%, #D97706 65%, #B45309 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+  /* Fix descender clipping */
+  padding-bottom: 0.15em;
+  line-height: 1.3;
+  /* Add text shadow for depth - using filter since text-shadow doesn't work with gradient text */
+  filter: drop-shadow(1px 1px 0px rgba(120, 53, 15, 0.3)) drop-shadow(-1px -1px 0px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* White section with honey drip top border */
+.white-section-drip {
+  position: relative;
+  background: white;
+  /* Add padding-top to make room for the drip */
+  padding-top: 30px;
+}
+
+.white-section-drip::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-image: url('/honey_drip.svg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: top center;
+  z-index: 0;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #FF8F00 0%, #FFC107 50%, #FF8F00 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(255, 193, 7, 0.2);
+}
+
+/* Glowing border animation */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 193, 7, 0.6); }
+}
+
+.glow-border:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Phone mockup frame */
+.phone-frame {
+  background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.phone-screen {
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+/* CTA button pulse */
+.cta-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 136, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+}
+
+/* Honey drip effect */
+.honey-drip::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 20px;
+  background: linear-gradient(to bottom, #FFC107, transparent);
+  border-radius: 0 0 50% 50%;
+  opacity: 0.6;
+}
+
+/* Flying bee path */
+@keyframes flyAcross {
+  0% {
+    transform: translateX(-100px) translateY(0) scaleX(-1);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-30px) scaleX(-1);
+  }
+  50% {
+    transform: translateX(50vw) translateY(10px) scaleX(-1);
+  }
+  75% {
+    transform: translateX(75vw) translateY(-20px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) translateY(0) scaleX(-1);
+  }
+}
+
+.flying-bee {
+  animation: flyAcross 12s linear infinite;
+}
+
+/* Timeline connector */
+.timeline-connector {
+  background: linear-gradient(to bottom, #e5e7eb, #FFC107);
+  transition: background 0.5s ease;
+}
+
+.timeline-connector.active {
+  background: linear-gradient(to bottom, #FFC107, #FF8F00);
+}
