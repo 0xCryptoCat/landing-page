@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import { FlyingBees } from './FlyingBees'
+import { CountdownTimer } from './CountdownTimer'
 
 export function Hero() {
   const scrollToContent = () => {
@@ -31,13 +32,17 @@ export function Hero() {
         </div>
         
         {/* Subheadline */}
-        <p className="text-lg sm:text-xl md:text-2xl text-amber-700 mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-200 font-display">
-          An idle game where bees make you rich.<br className="hidden sm:block" />
-          {/* Spawn bee swarms, harvest honey, and become the ultimate Royal Jelly tycoon! */}
+        <p className="text-base sm:text-lg md:text-xl text-amber-700 mb-6 max-w-2xl mx-auto animate-fade-in animation-delay-200 font-display">
+          An idle game where bees make you rich.
         </p>
 
+        {/* Countdown Timer */}
+        <div className="mb-6 sm:mb-8 animate-fade-in animation-delay-300">
+          <CountdownTimer />
+        </div>
+
         {/* CTA Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in animation-delay-400">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 sm:mb-12 animate-fade-in animation-delay-400">
           <a
             href="https://t.me/honeyincbot"
             target="_blank"

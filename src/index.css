@@ -68,6 +68,13 @@ body {
   50% { background-position: 100% 50%; }
 }
 
+/* Countdown box gradient - matches title gradient */
+.countdown-box-gradient {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 35%, #F59E0B 50%, #D97706 65%, #B45309 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
 /* White section with honey drip top border */
 .white-section-drip {
   position: relative;
