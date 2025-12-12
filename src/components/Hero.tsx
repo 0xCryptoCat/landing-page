@@ -44,7 +44,7 @@ export function Hero() {
         {/* CTA Button */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 sm:mb-12 animate-fade-in animation-delay-400">
           <a
-            href="https://t.me/honeyincbot"
+            href="https://t.me/honeyincbot/play"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gradient-to-bl from-blue-300 to-telegram text-white font-bold text-lg sm:text-xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cta-pulse"

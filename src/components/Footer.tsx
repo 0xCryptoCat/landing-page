@@ -8,7 +8,7 @@ export function Footer() {
           {/* Column 1: Logo & Tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
             <h3 className="text-2xl font-bold text-white font-honey mb-2">Honey, Inc.</h3>
-            <p className="text-amber-300">Build your dream farm!</p>
+            <p className="text-amber-400">Build your Bee Farm!</p>
           </div>
 
           {/* Column 2: Links */}
@@ -37,12 +37,12 @@ export function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors opacity-50">
-                  Privacy Policy (TBD)
+                  Privacy Policy
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors opacity-50">
-                  Terms of Service (TBD)
+                  Terms of Service
                 </a>
               </li>
             </ul>
@@ -92,7 +92,7 @@ export function Footer() {
             <form className="flex gap-2" onSubmit={e => e.preventDefault()}>
               <input
                 type="email"
-                placeholder="your@email.com"
+                placeholder="your@beemail.com"
                 className="flex-1 px-4 py-2 rounded-lg bg-amber-800 border border-amber-700 text-white placeholder-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
               />
               <button
@@ -106,9 +106,9 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-amber-800 pt-8 text-center text-amber-400 text-sm">
+        <div className="border-t border-amber-800 pt-8 text-center text-amber-500 text-sm">
           <p>© 2025 Honey, Inc. All rights reserved.</p>
-          <p className="mt-1">Made with 🐝 by the Hive team</p>
+          <p className="mt-1">Made with Buzz by the Hive Team</p>
         </div>
       </div>
     </footer>

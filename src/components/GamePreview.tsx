@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Check, Play } from 'lucide-react'
+import { Check } from 'lucide-react' // add `play` if needed
 
 const features = [
   'Spawn bees from the Hives',
@@ -48,7 +48,7 @@ export function GamePreview() {
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center text-amber-800 mb-12 sm:mb-16 transition-all duration-700 ${
+          className={`text-5xl sm:text-5xl md:text-5xl font-bold text-center font-honey text-gradient-title mb-12 sm:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -60,34 +60,20 @@ export function GamePreview() {
           <div
             className={`relative transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}
+            } justify-center flex`}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-100 to-orange-100 aspect-video">
-              {/* Placeholder for video - replace with actual video/gif */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-amber-500/30 transition-colors cursor-pointer">
-                    <Play className="w-10 h-10 text-amber-600 ml-1" />
-                  </div>
-                  <p className="text-amber-700 font-medium">Gameplay Video</p>
-                  <p className="text-amber-600/70 text-sm mt-1">Adding gameplay.mp4 here</p>
-                </div>
-              </div>
-              
-              {/* Video element - uncomment when you have the video */}
-              {/* <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-full h-full object-cover"
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center w-fit">
+              {/* Video element - portrait/mobile recording */}
+              <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="h-auto max-h-[500px] sm:max-h-[600px] w-fit object-contain"
               >
-                <source src="/gameplay.mp4" type="video/mp4" />
-              </video> */}
+              <source src="./screenshots/gameplay.mp4" type="video/mp4" />
+              </video>
             </div>
-            
-            {/* Decorative honey drip */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1/2 h-8 bg-gradient-to-b from-amber-400/40 to-transparent rounded-b-full" />
           </div>
 
           {/* Feature bullets */}
@@ -111,6 +97,47 @@ export function GamePreview() {
                 <span className="text-lg text-amber-900 font-medium">{feature}</span>
               </div>
             ))}
+          </div>
+
+          <div className="md:col-span-2 text-center mt-8">
+            {/* Coming soon text */}
+            <p
+              className={`text-amber-900/60 text-sm mt-8 mb-4 transition-all duration-700 delay-400 ${
+                isVisible ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              Soon on iOS & Android
+            </p>
+          
+            {/* App store badges */}
+            <div
+              className={`flex items-center justify-center gap-4 transition-all duration-700 delay-500 ${
+                isVisible ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <a 
+                href="#" 
+                className="cursor-not-allowed"
+                onClick={(e) => e.preventDefault()}
+              >
+                <img 
+                  src={`${import.meta.env.BASE_URL}AppStore.webp`}
+                  alt="Download on the App Store" 
+                  className="h-12 w-auto"
+                />
+              </a>
+              <a 
+                href="#" 
+                className="cursor-not-allowed"
+                onClick={(e) => e.preventDefault()}
+              >
+                <img 
+                  src={`${import.meta.env.BASE_URL}GooglePlay.webp`}
+                  alt="Get it on Google Play" 
+                  className="h-12 w-auto"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>

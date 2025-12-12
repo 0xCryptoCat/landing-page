@@ -1,31 +1,41 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Image } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react' // add `Image` if needed
 
 const screenshots = [
   {
-    src: '/screenshots/gameplay.png',
-    caption: 'Watch your bee army grow',
+    src: './screenshots/gameplay.png',
+    caption: 'Watch your Bee Colony grow',
     alt: 'Main gameplay view with bees flying',
   },
   {
-    src: '/screenshots/research.png',
+    src: './screenshots/research.png',
     caption: '100+ upgrades to unlock',
-    alt: 'Research modal with upgrades',
+    alt: 'Research with upgrades',
   },
   {
-    src: '/screenshots/hives.png',
-    caption: 'Level up your farm',
-    alt: 'Upgrade modal for hives',
+    src: './screenshots/epic.png',
+    caption: 'Epic upgrades for the ultimate farm',
+    alt: 'Epic Research upgrades',
   },
   {
-    src: '/screenshots/vehicles.png',
+    src: './screenshots/boosts.png',
+    caption: 'Many boosts to increase production',
+    alt: 'Boosts to power your farm',
+  },
+  {
+    src: './screenshots/vehicles.png',
     caption: 'Scale your shipping fleet',
     alt: 'Vehicle fleet at depot',
   },
   {
-    src: '/screenshots/reincarnation.png',
-    caption: 'Reincarnate for massive bonuses',
-    alt: 'Reincarnation modal',
+    src: './screenshots/rewards.png',
+    caption: 'Get rewards to keep you going',
+    alt: 'Rewards panel',
+  },
+  {
+    src: './screenshots/honey.png',
+    caption: 'Unlock unique honey types to farm',
+    alt: 'New Honey Screen',
   },
 ]
 
@@ -86,7 +96,7 @@ export function Screenshots() {
       <div className="max-w-4xl mx-auto">
         {/* Section title */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center text-amber-800 mb-4 transition-all duration-700 ${
+          className={`text-5xl sm:text-5xl md:text-5xl font-bold text-center font-honey text-gradient-title mb-4 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -109,9 +119,9 @@ export function Screenshots() {
           {/* Phone mockup */}
           <div className="max-w-sm mx-auto">
             <div className="phone-frame">
-              <div className="phone-screen relative aspect-[9/16] bg-gray-900">
+              <div className="phone-screen relative aspect-auto bg-gray-900">
                 {/* Screenshot placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100">
+                {/* <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100">
                   <div className="text-center p-4">
                     <Image className="w-16 h-16 text-amber-400 mx-auto mb-4" />
                     <p className="text-amber-700 font-medium text-sm">
@@ -121,14 +131,14 @@ export function Screenshots() {
                       </code>
                     </p>
                   </div>
-                </div>
+                </div> */}
                 
-                {/* Actual screenshot - uncomment when images are available */}
-                {/* <img 
+                {/* Actual screenshot section */}
+                <img 
                   src={screenshots[currentIndex].src}
                   alt={screenshots[currentIndex].alt}
                   className="w-full h-full object-cover transition-opacity duration-500"
-                /> */}
+                />
               </div>
             </div>
           </div>

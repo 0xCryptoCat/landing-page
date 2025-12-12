@@ -92,7 +92,7 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 transition-all duration-700 font-honey text-gradient-title ${
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 mt-6 transition-all duration-700 font-honey text-gradient-title ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -162,8 +162,8 @@ export function Features() {
                 
                 {/* Coming soon badge for special card */}
                 {isSpecial && (
-                  <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full group-hover:bg-white group-hover:text-amber-500 transition-colors duration-300">
-                    SOON
+                  <div className="absolute p-1 top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full group-hover:bg-white group-hover:text-amber-500 transition-colors duration-300">
+                    Soon
                   </div>
                 )}
               </div>

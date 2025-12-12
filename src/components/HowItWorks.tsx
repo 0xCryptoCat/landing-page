@@ -208,11 +208,11 @@ export function HowItWorks() {
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 transition-all duration-700 font-honey text-gradient-title ${
+          className={`text-5xl sm:text-5xl md:text-5xl font-bold text-center mb-4 transition-all duration-700 font-honey text-gradient-title ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Simple to Play, Hard to Put Down
+          Simple to Play, <br /> Hard to Put Down
         </h2>
         <p
           className={`text-center text-amber-600 text-lg mb-12 sm:mb-16 transition-all duration-700 delay-200 ${

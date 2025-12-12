@@ -4,18 +4,18 @@ import { SectionBee } from './FlyingBees'
 
 const testimonials = [
   {
-    quote: "Can't stop playing. My bee farm is insane!",
-    author: '@player1',
+    quote: "Can't stop playing. My bee farm is insane! 👀",
+    author: '@Mr4lph4',
     time: '2:34 PM',
   },
   {
     quote: 'Finally an idle game that works in Telegram',
-    author: '@player2',
+    author: '@StaceyQueen',
     time: '3:15 AM',
   },
   {
-    quote: 'The reincarnation system is so satisfying, I keep coming back for more!',
-    author: '@player3',
+    quote: 'The reincarnation system is so satisfying, I keep coming back for more 🍯',
+    author: '@TheLover99',
     time: '4:02 PM',
   },
 ]
@@ -48,11 +48,11 @@ function TelegramBubble({ quote, author, time, isActive, index }: {
     >
       <div className="relative max-w-md mx-auto">
         {/* Message bubble */}
-        <div className="bg-[#E3F2FD] rounded-2xl rounded-tl-sm px-4 py-3 shadow-md">
+        <div className="bg-[#E3F2FD] rounded-2xl rounded-tl-sm px-4 py-3 shadow-md border border-[#90CAF9]">
           {/* Author name */}
           <div className="text-telegram font-semibold text-sm mb-1 text-start">{author}</div>
           {/* Message text */}
-          <p className="text-gray-800 text-lg">{quote}</p>
+          <p className="text-gray-800 text-lg text-start pl-5">{quote}</p>
           {/* Timestamp */}
           <div className="flex justify-end mt-1">
             <span className="text-gray-500 text-xs">{time}</span>
@@ -60,7 +60,7 @@ function TelegramBubble({ quote, author, time, isActive, index }: {
         </div>
         {/* Bubble tail */}
         <div 
-          className="absolute -left-2 top-0 w-4 h-4 bg-[#E3F2FD]"
+          className="absolute -left-2 top-0 w-4 h-4 bg-[#E3F2FD] border-t border-[#90CAF9]"
           style={{
             clipPath: 'polygon(100% 0, 100% 100%, 0 0)',
           }}
@@ -81,9 +81,9 @@ export function SocialProof() {
         if (entry.isIntersecting) {
           setIsVisible(true)
           // Animate player count
-          const target = 1000
-          const duration = 2000
-          const steps = 60
+          const target = 1292
+          const duration = 1500
+          const steps = 6
           const increment = target / steps
           let current = 0
           
@@ -118,7 +118,7 @@ export function SocialProof() {
       <div className="max-w-4xl mx-auto text-center">
         {/* Section title */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 transition-all duration-700 font-honey text-gradient-title ${
+          className={`text-5xl sm:text-5xl sm:mt-5 md:text-5xl font-bold mb-12 mt-8 transition-all duration-700 font-honey text-gradient-title ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -151,7 +151,7 @@ export function SocialProof() {
         >
           <Users className="w-6 h-6 text-amber-600" />
           <span className="text-xl font-bold text-amber-800">
-            {playerCount.toLocaleString()}+ beekeepers and counting
+            {playerCount.toLocaleString()}+ players
           </span>
         </div>
       </div>

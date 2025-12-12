@@ -40,7 +40,7 @@ export function CTABanner() {
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         {/* Headline */}
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 transition-all duration-700 font-honey drop-shadow-lg ${
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 font-honey text-gradient-title drop-shadow-lg ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -53,7 +53,7 @@ export function CTABanner() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Free to play. No download needed. Just tap and go.
+          Free to play. No download needed. Just tap and buzz!
         </p>
 
         {/* CTA Button */}
@@ -63,7 +63,7 @@ export function CTABanner() {
           }`}
         >
           <a
-            href="https://t.me/honeyincbot"
+            href="https://t.me/honeyincbot/play"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-gradient-to-bl from-blue-300 to-telegram text-white font-bold text-xl px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cta-pulse"
@@ -74,45 +74,6 @@ export function CTABanner() {
               </svg>
             </div>
             Play Now
-          </a>
-        </div>
-
-        {/* Coming soon text */}
-        <p
-          className={`text-amber-900/60 text-sm mt-8 mb-4 transition-all duration-700 delay-400 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          Soon on iOS & Android
-        </p>
-        
-        {/* App store badges */}
-        <div
-          className={`flex items-center justify-center gap-4 transition-all duration-700 delay-500 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <a 
-            href="#" 
-            className="cursor-not-allowed"
-            onClick={(e) => e.preventDefault()}
-          >
-            <img 
-              src={`${import.meta.env.BASE_URL}AppStore.webp`}
-              alt="Download on the App Store" 
-              className="h-12 w-auto"
-            />
-          </a>
-          <a 
-            href="#" 
-            className="cursor-not-allowed"
-            onClick={(e) => e.preventDefault()}
-          >
-            <img 
-              src={`${import.meta.env.BASE_URL}GooglePlay.webp`}
-              alt="Get it on Google Play" 
-              className="h-12 w-auto"
-            />
           </a>
         </div>
       </div>
