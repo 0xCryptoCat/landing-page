@@ -355,11 +355,11 @@
         addDebugLog('🔄 Loading PayPal SDK...');
         
         const script = document.createElement('script');
-        // Load PayPal SDK with Google Pay enabled, Card disabled
+        // Basic SDK only - production account doesn't have Apple/Google Pay fully activated yet
+        // Just load PayPal button with card disabled
         const baseUrl = 'https://www.paypal.com/sdk/js';
         const params = [
-          'client-id=ARsqPWdszBaGLZyID6adAg6h41xFf6ThulRW4Y3STuR_-0hUFxZ8WgvzcueVDMYIw01GzCs6xXXu6iIX',
-          'enable-funding=googlepay',
+          'client-id=AYXQTvPjo1tpK0ON9fJj0NYbc8EpND658blncUXGTNTaNQ1kss3iWUgDDtY5z6RbqP1rsl2JH0RgbtTs',
           'disable-funding=card',
           'currency=USD'
         ];
@@ -458,92 +458,44 @@
         return;
       }
       
-      let anyButtonRendered = false;
+      addDebugLog('🎨 Rendering PayPal button...');
       
-      // Apple Pay button
-      const appleContainer = document.getElementById('applepay-container');
-      if (appleContainer) {
-        try {
-          const button = paypal.Buttons({
-            fundingSource: paypal.FUNDING.APPLEPAY,
-            style: { height: 48 },
-            createOrder: () => Promise.resolve(orderId),
-            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
-            onError: (err) => handlePaymentError(err),
-            onCancel: () => {
-              addDebugLog('❌ Payment cancelled');
-              setTimeout(returnToGame, 2000);
-            }
-          });
-          
-          if (button.isEligible && button.isEligible()) {
-            button.render('#applepay-container');
-            anyButtonRendered = true;
-            addDebugLog('✅ Apple Pay available');
-          } else {
-            addDebugLog('ℹ️ Apple Pay not available');
-            appleContainer.style.display = 'none';
-          }
-        } catch (err) {
-          addDebugLog('ℹ️ Apple Pay error: ' + err.message);
-          appleContainer.style.display = 'none';
-        }
-      }
-      
-      // Google Pay button
-      const googleContainer = document.getElementById('googlepay-container');
-      if (googleContainer) {
-        try {
-          const button = paypal.Buttons({
-            fundingSource: paypal.FUNDING.GOOGLEPAY,
-            style: { height: 48 },
-            createOrder: () => Promise.resolve(orderId),
-            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
-            onError: (err) => handlePaymentError(err),
-            onCancel: () => {
-              addDebugLog('❌ Payment cancelled');
-              setTimeout(returnToGame, 2000);
-            }
-          });
-          
-          if (button.isEligible && button.isEligible()) {
-            button.render('#googlepay-container');
-            anyButtonRendered = true;
-            addDebugLog('✅ Google Pay available');
-          } else {
-            addDebugLog('ℹ️ Google Pay not available');
-            googleContainer.style.display = 'none';
-          }
-        } catch (err) {
-          addDebugLog('ℹ️ Google Pay error: ' + err.message);
-          googleContainer.style.display = 'none';
-        }
-      }
-      
-      // PayPal fallback button (always render)
+      // Render PayPal button only (Apple/Google Pay require production approval)
       const paypalContainer = document.getElementById('paypal-fallback-container');
       if (paypalContainer) {
         try {
           paypal.Buttons({
             fundingSource: paypal.FUNDING.PAYPAL,
-            style: { height: 48, color: 'gold' },
-            createOrder: () => Promise.resolve(orderId),
-            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
-            onError: (err) => handlePaymentError(err),
+            style: { 
+              height: 48, 
+              color: 'gold',
+              label: 'pay',
+              shape: 'rect'
+            },
+            createOrder: (data, actions) => {
+              // Return the existing order ID created by our backend
+              addDebugLog('💳 Using order ID: ' + orderId.substring(0, 15) + '...');
+              return orderId;
+            },
+            onApprove: async (data, actions) => {
+              addDebugLog('✅ Payment approved, order ID: ' + data.orderID.substring(0, 15) + '...');
+              await handlePaymentApproval(data.orderID, itemId, itemType, priceUsd);
+            },
+            onError: (err) => {
+              addDebugLog('❌ Payment error: ' + (err.message || 'Unknown error'));
+              handlePaymentError(err);
+            },
             onCancel: () => {
-              addDebugLog('❌ Payment cancelled');
+              addDebugLog('❌ Payment cancelled by user');
               setTimeout(returnToGame, 2000);
             }
           }).render('#paypal-fallback-container');
-          anyButtonRendered = true;
-          addDebugLog('✅ PayPal available');
+          addDebugLog('✅ PayPal button rendered successfully');
         } catch (err) {
-          addDebugLog('❌ PayPal error: ' + err.message);
+          addDebugLog('❌ Failed to render PayPal button: ' + err.message);
+          setStatus('error');
+          document.getElementById('error-message').textContent = 'Failed to render payment button';
         }
-      }
-      
-      if (!anyButtonRendered) {
-        addDebugLog('⚠️ No payment methods could be rendered');
       }
     }
     
