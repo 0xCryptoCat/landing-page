@@ -355,8 +355,17 @@
         addDebugLog('🔄 Loading PayPal SDK...');
         
         const script = document.createElement('script');
-        script.src = 'https://www.paypal.com/sdk/js?client-id=AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz&components=buttons,applepay,googlepay&currency=USD&buyer-country=US';
+        // Build URL properly to avoid HTML encoding issues
+        const params = new URLSearchParams({
+          'client-id': 'AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz',
+          'components': 'buttons,applepay,googlepay',
+          'currency': 'USD',
+          'buyer-country': 'US'
+        });
+        script.src = 'https://www.paypal.com/sdk/js?' + params.toString();
         script.setAttribute('data-sdk-integration-source', 'button-factory');
+        
+        addDebugLog('🌐 SDK URL: ' + script.src.substring(0, 80) + '...');
         
         script.onload = () => {
           addDebugLog('✅ PayPal SDK script loaded successfully');
