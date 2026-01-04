@@ -332,9 +332,11 @@
     </div>
   </div>
 
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz&components=buttons,applepay,googlepay&currency=USD&buyer-country=US"></script>
+  
   <script>
     const SUPABASE_URL = 'https://mmzwtfywyqrkeqpbdbqk.supabase.co';
-    const PAYPAL_CLIENT_ID = 'AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz';
     
     let debugLog = [];
     
@@ -365,8 +367,12 @@
       if (!orderId || !itemId || !itemType || !priceUsd) {
         setStatus('error');
         document.getElementById('error-message').textContent = 'Invalid payment link. Missing required parameters.';
+        addDebugLog('❌ Missing URL parameters');
         return;
       }
+      
+      addDebugLog('✅ Payment URL parameters loaded');
+      addDebugLog('Order ID: ' + orderId.substring(0, 15) + '...');
       
       // Show item details
       if (description) {
@@ -375,24 +381,25 @@
         document.getElementById('item-price').textContent = '$' + priceUsd;
       }
       
-      // Load PayPal SDK
-      const script = document.createElement('script');
-      script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&components=buttons,applepay,googlepay&currency=USD`;
-      script.async = true;
-      
-      script.onload = () => {
-        addDebugLog('✅ PayPal SDK loaded');
+      // Wait for PayPal SDK to load
+      if (typeof paypal === 'undefined') {
+        addDebugLog('⏳ Waiting for PayPal SDK...');
+        setTimeout(() => {
+          if (typeof paypal !== 'undefined') {
+            addDebugLog('✅ PayPal SDK loaded');
+            setStatus('ready');
+            renderPaymentButtons(orderId, itemId, itemType, priceUsd);
+          } else {
+            setStatus('error');
+            document.getElementById('error-message').textContent = 'Failed to load PayPal SDK';
+            addDebugLog('❌ PayPal SDK failed to load');
+          }
+        }, 1000);
+      } else {
+        addDebugLog('✅ PayPal SDK already loaded');
         setStatus('ready');
         renderPaymentButtons(orderId, itemId, itemType, priceUsd);
-      };
-      
-      script.onerror = () => {
-        setStatus('error');
-        document.getElementById('error-message').textContent = 'Failed to load PayPal SDK';
-        addDebugLog('❌ PayPal SDK failed to load');
-      };
-      
-      document.body.appendChild(script);
+      }
     }
     
     function renderPaymentButtons(orderId, itemId, itemType, priceUsd) {
