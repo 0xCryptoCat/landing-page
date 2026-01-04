@@ -355,11 +355,12 @@
         addDebugLog('🔄 Loading PayPal SDK...');
         
         const script = document.createElement('script');
-        // Start with basic PayPal buttons only (no Apple/Google Pay)
-        // Once this works, we can add enable-funding back
+        // Load PayPal SDK with Google Pay enabled, Card disabled
         const baseUrl = 'https://www.paypal.com/sdk/js';
         const params = [
           'client-id=ARsqPWdszBaGLZyID6adAg6h41xFf6ThulRW4Y3STuR_-0hUFxZ8WgvzcueVDMYIw01GzCs6xXXu6iIX',
+          'enable-funding=googlepay',
+          'disable-funding=card',
           'currency=USD'
         ];
         const sdkUrl = baseUrl + '?' + params.join('&');
@@ -466,7 +467,7 @@
           const button = paypal.Buttons({
             fundingSource: paypal.FUNDING.APPLEPAY,
             style: { height: 48 },
-            createOrder: () => orderId,
+            createOrder: () => Promise.resolve(orderId),
             onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
             onError: (err) => handlePaymentError(err),
             onCancel: () => {
@@ -496,7 +497,7 @@
           const button = paypal.Buttons({
             fundingSource: paypal.FUNDING.GOOGLEPAY,
             style: { height: 48 },
-            createOrder: () => orderId,
+            createOrder: () => Promise.resolve(orderId),
             onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
             onError: (err) => handlePaymentError(err),
             onCancel: () => {
@@ -525,9 +526,8 @@
         try {
           paypal.Buttons({
             fundingSource: paypal.FUNDING.PAYPAL,
-            disableFunding: paypal.FUNDING.CARD,
             style: { height: 48, color: 'gold' },
-            createOrder: () => orderId,
+            createOrder: () => Promise.resolve(orderId),
             onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
             onError: (err) => handlePaymentError(err),
             onCancel: () => {
