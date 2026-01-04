@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Honey, Inc.</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/honey_jar/TfFancy Free Trial.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <style>
+    @font-face {
+      font-family: 'Honey';
+      src: url('/fonts/honey_jar/TfFancy Free Trial.woff2') format('woff2');
+      font-display: swap;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(to bottom right, #faf5ff, #f3e8ff, #fce7f3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 28rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .title {
+      font-family: 'Honey', cursive;
+      font-size: 1.875rem;
+      font-weight: 900;
+      color: #581c87;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      color: #7e22ce;
+      font-weight: 600;
+    }
+    
+    .card {
+      background: linear-gradient(to bottom, white, #faf5ff, #f3e8ff);
+      border-radius: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 4px solid #d8b4fe;
+      overflow: hidden;
+    }
+    
+    .card-header {
+      background: linear-gradient(to right, #a855f7, #9333ea, #ec4899);
+      padding: 1.25rem;
+      text-align: center;
+      color: white;
+    }
+    
+    .item-description {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+    
+    .price {
+      font-size: 1.875rem;
+      font-weight: 900;
+      margin-top: 0.25rem;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .status-message {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      border: 4px solid #a855f7;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .status-text {
+      color: #7e22ce;
+      font-weight: 500;
+    }
+    
+    .section-title {
+      font-weight: 700;
+      color: #581c87;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .button-container {
+      min-height: 48px;
+      margin-bottom: 1rem;
+    }
+    
+    .hint {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9333ea;
+      margin-top: 1rem;
+    }
+    
+    .success-icon {
+      width: 4rem;
+      height: 4rem;
+      background: #d1fae5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    
+    .success-icon svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: #059669;
+    }
+    
+    .success-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #047857;
+      margin-bottom: 0.75rem;
+    }
+    
+    .success-text {
+      color: #059669;
+      margin-bottom: 1rem;
+    }
+    
+    .mail-notice {
+      padding: 1rem;
+      background: #dbeafe;
+      border: 2px solid #93c5fd;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .mail-notice-title {
+      color: #1e40af;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .mail-notice-text {
+      color: #1e3a8a;
+      font-size: 0.875rem;
+    }
+    
+    .error-icon {
+      width: 4rem;
+      height: 4rem;
+      background: #fee2e2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    
+    .error-icon svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: #dc2626;
+    }
+    
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #b91c1c;
+      margin-bottom: 0.75rem;
+    }
+    
+    .error-text {
+      color: #dc2626;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn {
+      width: 100%;
+      background: linear-gradient(to right, #a855f7, #9333ea);
+      color: white;
+      font-weight: 700;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(to right, #9333ea, #7e22ce);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .debug-info {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #f3e8ff;
+      border: 2px solid #d8b4fe;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      color: #7e22ce;
+    }
+    
+    .debug-title {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+    .debug-log {
+      margin-top: 0.25rem;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 1rem;
+      color: #7e22ce;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Honey, Inc.</h1>
+      <p class="subtitle">Secure Payment Gateway</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="item-header" style="display: none;">
+        <h2 class="item-description" id="item-description"></h2>
+        <p class="price" id="item-price"></p>
+      </div>
+
+      <div class="card-body">
+        <div id="loading-state" class="status-message">
+          <div class="spinner"></div>
+          <p class="status-text">Loading payment options...</p>
+        </div>
+
+        <div id="ready-state" style="display: none;">
+          <h3 class="section-title">Choose your payment method:</h3>
+          <div class="button-container" id="applepay-container"></div>
+          <div class="button-container" id="googlepay-container"></div>
+          <div class="button-container" id="paypal-fallback-container"></div>
+          <p class="hint">💡 Apple Pay and Google Pay are only available on mobile devices</p>
+        </div>
+
+        <div id="processing-state" style="display: none;" class="status-message">
+          <div class="spinner"></div>
+          <p class="status-text">Processing your payment...</p>
+          <p style="color: #1e40af; font-size: 0.875rem; margin-top: 0.5rem;">Please wait, do not close this page</p>
+        </div>
+
+        <div id="success-state" style="display: none;" class="status-message">
+          <div class="success-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h2 class="success-title">Payment Successful!</h2>
+          <p class="success-text">Your purchase has been completed.</p>
+          <div class="mail-notice">
+            <p class="mail-notice-title">📬 Check your in-game mail!</p>
+            <p class="mail-notice-text">Your rewards have been sent to your mailbox.</p>
+          </div>
+          <button class="btn" onclick="returnToGame()">Return to Game</button>
+        </div>
+
+        <div id="error-state" style="display: none;" class="status-message">
+          <div class="error-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </div>
+          <h2 class="error-title">Payment Failed</h2>
+          <p class="error-text" id="error-message"></p>
+          <button class="btn" onclick="returnToGame()">Return to Game</button>
+        </div>
+
+        <div id="debug-info" class="debug-info">
+          <div class="debug-title">Debug Info:</div>
+          <div id="debug-log" class="debug-log"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Secure payment powered by PayPal</p>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://mmzwtfywyqrkeqpbdbqk.supabase.co';
+    const PAYPAL_CLIENT_ID = 'AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz';
+    
+    let debugLog = [];
+    
+    function addDebugLog(message) {
+      debugLog.push(message);
+      document.getElementById('debug-log').innerHTML = debugLog.join('<br>');
+    }
+    
+    function setStatus(status) {
+      ['loading-state', 'ready-state', 'processing-state', 'success-state', 'error-state'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      document.getElementById(status + '-state').style.display = 'block';
+    }
+    
+    function returnToGame() {
+      window.location.href = 'https://t.me/honeyincbot/play';
+    }
+    
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order');
+      const itemId = params.get('item');
+      const itemType = params.get('type');
+      const priceUsd = params.get('price');
+      const description = params.get('desc');
+      
+      if (!orderId || !itemId || !itemType || !priceUsd) {
+        setStatus('error');
+        document.getElementById('error-message').textContent = 'Invalid payment link. Missing required parameters.';
+        return;
+      }
+      
+      // Show item details
+      if (description) {
+        document.getElementById('item-header').style.display = 'block';
+        document.getElementById('item-description').textContent = description;
+        document.getElementById('item-price').textContent = '$' + priceUsd;
+      }
+      
+      // Load PayPal SDK
+      const script = document.createElement('script');
+      script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&components=buttons,applepay,googlepay&currency=USD`;
+      script.async = true;
+      
+      script.onload = () => {
+        addDebugLog('✅ PayPal SDK loaded');
+        setStatus('ready');
+        renderPaymentButtons(orderId, itemId, itemType, priceUsd);
+      };
+      
+      script.onerror = () => {
+        setStatus('error');
+        document.getElementById('error-message').textContent = 'Failed to load PayPal SDK';
+        addDebugLog('❌ PayPal SDK failed to load');
+      };
+      
+      document.body.appendChild(script);
+    }
+    
+    function renderPaymentButtons(orderId, itemId, itemType, priceUsd) {
+      const paypal = window.paypal;
+      if (!paypal) {
+        document.getElementById('error-message').textContent = 'PayPal SDK not available';
+        return;
+      }
+      
+      let anyButtonRendered = false;
+      
+      // Apple Pay button
+      const appleContainer = document.getElementById('applepay-container');
+      if (appleContainer) {
+        try {
+          const button = paypal.Buttons({
+            fundingSource: paypal.FUNDING.APPLEPAY,
+            style: { height: 48 },
+            createOrder: () => orderId,
+            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
+            onError: (err) => handlePaymentError(err),
+            onCancel: () => {
+              addDebugLog('❌ Payment cancelled');
+              setTimeout(returnToGame, 2000);
+            }
+          });
+          
+          if (button.isEligible && button.isEligible()) {
+            button.render('#applepay-container');
+            anyButtonRendered = true;
+            addDebugLog('✅ Apple Pay available');
+          } else {
+            addDebugLog('ℹ️ Apple Pay not available');
+            appleContainer.style.display = 'none';
+          }
+        } catch (err) {
+          addDebugLog('ℹ️ Apple Pay error: ' + err.message);
+          appleContainer.style.display = 'none';
+        }
+      }
+      
+      // Google Pay button
+      const googleContainer = document.getElementById('googlepay-container');
+      if (googleContainer) {
+        try {
+          const button = paypal.Buttons({
+            fundingSource: paypal.FUNDING.GOOGLEPAY,
+            style: { height: 48 },
+            createOrder: () => orderId,
+            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
+            onError: (err) => handlePaymentError(err),
+            onCancel: () => {
+              addDebugLog('❌ Payment cancelled');
+              setTimeout(returnToGame, 2000);
+            }
+          });
+          
+          if (button.isEligible && button.isEligible()) {
+            button.render('#googlepay-container');
+            anyButtonRendered = true;
+            addDebugLog('✅ Google Pay available');
+          } else {
+            addDebugLog('ℹ️ Google Pay not available');
+            googleContainer.style.display = 'none';
+          }
+        } catch (err) {
+          addDebugLog('ℹ️ Google Pay error: ' + err.message);
+          googleContainer.style.display = 'none';
+        }
+      }
+      
+      // PayPal fallback button (always render)
+      const paypalContainer = document.getElementById('paypal-fallback-container');
+      if (paypalContainer) {
+        try {
+          paypal.Buttons({
+            fundingSource: paypal.FUNDING.PAYPAL,
+            disableFunding: paypal.FUNDING.CARD,
+            style: { height: 48, color: 'gold' },
+            createOrder: () => orderId,
+            onApprove: (data) => handlePaymentApproval(data.orderID, itemId, itemType, priceUsd),
+            onError: (err) => handlePaymentError(err),
+            onCancel: () => {
+              addDebugLog('❌ Payment cancelled');
+              setTimeout(returnToGame, 2000);
+            }
+          }).render('#paypal-fallback-container');
+          anyButtonRendered = true;
+          addDebugLog('✅ PayPal available');
+        } catch (err) {
+          addDebugLog('❌ PayPal error: ' + err.message);
+        }
+      }
+      
+      if (!anyButtonRendered) {
+        addDebugLog('⚠️ No payment methods could be rendered');
+      }
+    }
+    
+    async function handlePaymentApproval(orderID, itemId, itemType, priceUsd) {
+      setStatus('processing');
+      addDebugLog('⏳ Validating payment...');
+      
+      try {
+        const response = await fetch(`${SUPABASE_URL}/functions/v1/validate-paypal-payment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${window.Telegram?.WebApp?.initData || ''}`
+          },
+          body: JSON.stringify({
+            orderId: orderID,
+            itemId: itemId,
+            itemType: itemType,
+            priceUsd: parseFloat(priceUsd)
+          })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          setStatus('success');
+          addDebugLog('✅ Payment successful!');
+          addDebugLog('📬 Check your in-game mail for rewards');
+        } else {
+          setStatus('error');
+          document.getElementById('error-message').textContent = result.error || 'Payment validation failed';
+          addDebugLog('❌ Error: ' + result.error);
+        }
+      } catch (err) {
+        setStatus('error');
+        document.getElementById('error-message').textContent = err.message || 'Payment validation failed';
+        addDebugLog('❌ ' + err.message);
+      }
+    }
+    
+    function handlePaymentError(err) {
+      setStatus('error');
+      document.getElementById('error-message').textContent = 'Payment failed';
+      addDebugLog('❌ Payment error: ' + (err.message || 'Unknown error'));
+    }
+    
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>
