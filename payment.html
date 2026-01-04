@@ -333,7 +333,7 @@
   </div>
 
   <!-- PayPal SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz&components=buttons,applepay,googlepay&currency=USD&buyer-country=US"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz&components=buttons,applepay,googlepay&currency=USD&buyer-country=US" data-sdk-integration-source="button-factory"></script>
   
   <script>
     const SUPABASE_URL = 'https://mmzwtfywyqrkeqpbdbqk.supabase.co';
@@ -381,20 +381,27 @@
         document.getElementById('item-price').textContent = '$' + priceUsd;
       }
       
-      // Wait for PayPal SDK to load
+      // Wait for PayPal SDK to load (with retry logic)
       if (typeof paypal === 'undefined') {
         addDebugLog('⏳ Waiting for PayPal SDK...');
-        setTimeout(() => {
+        
+        let attempts = 0;
+        const maxAttempts = 10; // Try for 5 seconds total
+        const checkInterval = setInterval(() => {
+          attempts++;
+          
           if (typeof paypal !== 'undefined') {
-            addDebugLog('✅ PayPal SDK loaded');
+            clearInterval(checkInterval);
+            addDebugLog('✅ PayPal SDK loaded (attempt ' + attempts + ')');
             setStatus('ready');
             renderPaymentButtons(orderId, itemId, itemType, priceUsd);
-          } else {
+          } else if (attempts >= maxAttempts) {
+            clearInterval(checkInterval);
             setStatus('error');
-            document.getElementById('error-message').textContent = 'Failed to load PayPal SDK';
-            addDebugLog('❌ PayPal SDK failed to load');
+            document.getElementById('error-message').textContent = 'Failed to load PayPal SDK. Please check your internet connection.';
+            addDebugLog('❌ PayPal SDK failed to load after ' + attempts + ' attempts');
           }
-        }, 1000);
+        }, 500); // Check every 500ms
       } else {
         addDebugLog('✅ PayPal SDK already loaded');
         setStatus('ready');
