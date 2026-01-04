@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.paypal.com https://*.paypal.com; connect-src 'self' https://www.paypal.com https://*.paypal.com https://mmzwtfywyqrkeqpbdbqk.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:">
   <title>Payment - Honey, Inc.</title>
   
   <!-- Fonts -->
@@ -370,8 +371,13 @@
         
         script.onerror = (error) => {
           addDebugLog('❌ PayPal SDK script failed to load');
-          addDebugLog('Error: ' + (error.message || 'Network error or blocked by CSP'));
-          reject(error);
+          addDebugLog('Error type: ' + typeof error);
+          addDebugLog('Error details: ' + JSON.stringify({
+            message: error.message,
+            type: error.type,
+            target: error.target?.src
+          }));
+          reject(new Error('Network error or blocked by CSP'));
         };
         
         document.head.appendChild(script);
