@@ -356,16 +356,21 @@
         
         const script = document.createElement('script');
         // Build URL properly to avoid HTML encoding issues
-        const params = new URLSearchParams({
-          'client-id': 'AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz',
-          'components': 'buttons,applepay,googlepay',
-          'currency': 'USD',
-          'buyer-country': 'US'
-        });
-        script.src = 'https://www.paypal.com/sdk/js?' + params.toString();
+        const sdkUrl = 'https://www.paypal.com/sdk/js' +
+          '?client-id=AaHnT6YL5vH1E9ksIBNJGRr2p2TWO0iEhGhRdmNm29ehmjlwDxwjrh10LMmVJcBpqrPBPJbMpVEsG3Uz' +
+          '&components=buttons,applepay,googlepay' +
+          '&currency=USD' +
+          '&buyer-country=US';
+        
+        script.src = sdkUrl;
         script.setAttribute('data-sdk-integration-source', 'button-factory');
         
-        addDebugLog('🌐 SDK URL: ' + script.src.substring(0, 80) + '...');
+        // Test fetch to see what the actual error is
+        fetch(sdkUrl, { method: 'HEAD', mode: 'no-cors' })
+          .then(() => addDebugLog('✅ SDK URL is reachable'))
+          .catch((err) => addDebugLog('⚠️ Fetch test: ' + err.message));
+        
+        addDebugLog('🌐 SDK URL set (length: ' + sdkUrl.length + ')');
         
         script.onload = () => {
           addDebugLog('✅ PayPal SDK script loaded successfully');
