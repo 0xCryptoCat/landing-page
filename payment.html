@@ -355,14 +355,12 @@
         addDebugLog('🔄 Loading PayPal SDK...');
         
         const script = document.createElement('script');
-        // Build URL using proper encoding to avoid &currency being parsed as HTML entity
+        // Start with basic PayPal buttons only (no Apple/Google Pay)
+        // Once this works, we can add enable-funding back
         const baseUrl = 'https://www.paypal.com/sdk/js';
         const params = [
           'client-id=ARsqPWdszBaGLZyID6adAg6h41xFf6ThulRW4Y3STuR_-0hUFxZ8WgvzcueVDMYIw01GzCs6xXXu6iIX',
-          'components=buttons',
-          'enable-funding=applepay,googlepay',
-          'currency=USD',
-          'buyer-country=US'
+          'currency=USD'
         ];
         const sdkUrl = baseUrl + '?' + params.join('&');
         
