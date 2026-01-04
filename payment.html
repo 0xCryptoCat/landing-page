@@ -355,12 +355,15 @@
         addDebugLog('🔄 Loading PayPal SDK...');
         
         const script = document.createElement('script');
-        // Build URL properly to avoid HTML encoding issues
-        const sdkUrl = 'https://www.paypal.com/sdk/js' +
-          '?client-id=ARsqPWdszBaGLZyID6adAg6h41xFf6ThulRW4Y3STuR_-0hUFxZ8WgvzcueVDMYIw01GzCs6xXXu6iIX' +
-          '&components=buttons,applepay,googlepay' +
-          '&currency=USD' +
-          '&buyer-country=US';
+        // Build URL using proper encoding to avoid &currency being parsed as HTML entity
+        const baseUrl = 'https://www.paypal.com/sdk/js';
+        const params = [
+          'client-id=ARsqPWdszBaGLZyID6adAg6h41xFf6ThulRW4Y3STuR_-0hUFxZ8WgvzcueVDMYIw01GzCs6xXXu6iIX',
+          'components=buttons,applepay,googlepay',
+          'currency=USD',
+          'buyer-country=US'
+        ];
+        const sdkUrl = baseUrl + '?' + params.join('&');
         
         script.src = sdkUrl;
         script.setAttribute('data-sdk-integration-source', 'button-factory');
