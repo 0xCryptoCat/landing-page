@@ -5,6 +5,7 @@ import { Features } from './components/Features'
 import { Screenshots } from './components/Screenshots'
 import { SocialProof } from './components/SocialProof'
 import { CTABanner } from './components/CTABanner'
+import { HiveLabsStrip } from './components/HiveLabsStrip'
 import { Footer } from './components/Footer'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Screenshots />
       <SocialProof />
       <CTABanner />
+      <HiveLabsStrip />
       <Footer />
     </div>
   )

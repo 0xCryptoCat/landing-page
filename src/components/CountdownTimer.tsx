@@ -100,15 +100,15 @@ export function CountdownTimer() {
       
       {/* Timer digits */}
       <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 relative">
-        <TimeUnit value={timeLeft.weeks} label="" />
+        <TimeUnit value={timeLeft.weeks} label="Weeks" />
         <span className="text-amber-600/50 font-light text-lg sm:text-xl md:text-2xl self-start mt-2 sm:mt-3 md:mt-4">:</span>
-        <TimeUnit value={timeLeft.days} label="" />
+        <TimeUnit value={timeLeft.days} label="Days" />
         <span className="text-amber-600/50 font-light text-lg sm:text-xl md:text-2xl self-start mt-2 sm:mt-3 md:mt-4">:</span>
-        <TimeUnit value={timeLeft.hours} label="" />
+        <TimeUnit value={timeLeft.hours} label="Hours" />
         <span className="text-amber-600/50 font-light text-lg sm:text-xl md:text-2xl self-start mt-2 sm:mt-3 md:mt-4">:</span>
-        <TimeUnit value={timeLeft.minutes} label="" />
+        <TimeUnit value={timeLeft.minutes} label="Mins" />
         <span className="text-amber-600/50 font-light text-lg sm:text-xl md:text-2xl self-start mt-2 sm:mt-3 md:mt-4">:</span>
-        <TimeUnit value={timeLeft.seconds} label="" />
+        <TimeUnit value={timeLeft.seconds} label="Secs" />
       </div>
 
       <p className="text-xs sm:text-sm md:text-base text-amber-700 font-medium tracking-wide uppercase flex items-center gap-2">

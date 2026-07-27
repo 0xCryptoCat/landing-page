@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Send, Twitter, Youtube, Music2, Loader2, Check } from 'lucide-react'
 
 // Supabase edge function URL
-const NEWSLETTER_SIGNUP_URL = import.meta.env.VITE_SUPABASE_URL 
-  ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/newsletter-signup`
-  : 'https://bhwkgpgtcvpgwvedwfez.supabase.co/functions/v1/newsletter-signup';
+const SUPABASE_URL = 'https://soglsvcfkrmuujxjmvld.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvZ2xzdmNma3JtdXVqeGptdmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzNzc4NTIsImV4cCI6MjA3ODk1Mzg1Mn0.CNiFc6S-pXvRD6k6Ri6DDVHx80EiWE9xrpbWTdw-VY0';
+const NEWSLETTER_SIGNUP_URL = `${SUPABASE_URL}/functions/v1/newsletter-signup`;
 
 export function Footer() {
   const [email, setEmail] = useState('')
@@ -26,7 +26,11 @@ export function Footer() {
     try {
       const response = await fetch(NEWSLETTER_SIGNUP_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        },
         body: JSON.stringify({ email: email.trim(), source: 'landing-page-footer' }),
       })
 
@@ -86,8 +90,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors opacity-50">
+                <a href="/privacy.html" className="hover:text-white transition-colors">
                   Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://thehive.honeyinc.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  The Hive Labs
                 </a>
               </li>
               <li>

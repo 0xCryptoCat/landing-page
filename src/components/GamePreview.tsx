@@ -99,46 +99,6 @@ export function GamePreview() {
             ))}
           </div>
 
-          <div className="md:col-span-2 text-center mt-8">
-            {/* Coming soon text */}
-            <p
-              className={`text-amber-900/60 text-sm mt-8 mb-4 transition-all duration-700 delay-400 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              Soon on iOS & Android
-            </p>
-          
-            {/* App store badges */}
-            <div
-              className={`flex items-center justify-center gap-4 transition-all duration-700 delay-500 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <a 
-                href="#" 
-                className="cursor-not-allowed"
-                onClick={(e) => e.preventDefault()}
-              >
-                <img 
-                  src={`${import.meta.env.BASE_URL}AppStore.webp`}
-                  alt="Download on the App Store" 
-                  className="h-12 w-auto"
-                />
-              </a>
-              <a 
-                href="#" 
-                className="cursor-not-allowed"
-                onClick={(e) => e.preventDefault()}
-              >
-                <img 
-                  src={`${import.meta.env.BASE_URL}GooglePlay.webp`}
-                  alt="Get it on Google Play" 
-                  className="h-12 w-auto"
-                />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
