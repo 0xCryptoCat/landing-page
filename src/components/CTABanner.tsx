@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { PLAY_STORE_URL, TELEGRAM_PLAY_URL, TESTFLIGHT_URL } from '../links'
 
 export function CTABanner() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -53,7 +54,7 @@ export function CTABanner() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Free to play. No download needed. Just tap and buzz!
+          Free to play on Android, iOS beta, or right inside Telegram.
         </p>
 
         {/* CTA Button */}
@@ -63,7 +64,7 @@ export function CTABanner() {
           }`}
         >
           <a
-            href="https://t.me/honeyincbot/play"
+            href={TELEGRAM_PLAY_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-gradient-to-bl from-blue-300 to-telegram text-white font-bold text-xl px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cta-pulse"
@@ -75,6 +76,26 @@ export function CTABanner() {
             </div>
             Play Now
           </a>
+
+          {/* Store routes, secondary to the zero-friction Telegram entry point. */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-amber-900/80">
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline decoration-2 underline-offset-4 hover:text-amber-950 transition-colors"
+            >
+              Get it on Google Play
+            </a>
+            <a
+              href={TESTFLIGHT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline decoration-2 underline-offset-4 hover:text-amber-950 transition-colors"
+            >
+              Join the iOS beta
+            </a>
+          </div>
         </div>
       </div>
     </section>

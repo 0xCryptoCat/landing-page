@@ -80,8 +80,9 @@ export function SocialProof() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          // Animate player count
-          const target = 1292
+          // Animate player count. 20k+ is the onboarded-player figure the
+          // company reports; keep the two in step if that number moves.
+          const target = 20000
           const duration = 1500
           const steps = 6
           const increment = target / steps
@@ -151,7 +152,7 @@ export function SocialProof() {
         >
           <Users className="w-6 h-6 text-amber-600" />
           <span className="text-xl font-bold text-amber-800">
-            {playerCount.toLocaleString()}+ players
+            {playerCount.toLocaleString()}+ players onboarded
           </span>
         </div>
       </div>

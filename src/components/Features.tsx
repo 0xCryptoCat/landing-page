@@ -1,64 +1,68 @@
 import { useEffect, useRef, useState } from 'react'
-import { 
-  Building2, 
-  Droplets, 
-  FlaskConical, 
-  Sparkles, 
-  Truck, 
-  RefreshCw, 
-  Smartphone,
-  Gem
-} from 'lucide-react'
+import { Smartphone } from 'lucide-react'
 import { SectionBee } from './FlyingBees'
+import { GameIcon, HexTile, type HexVariant } from './GameIcon'
 
-const features = [
+/**
+ * Counts here come from the game's own data files (`gameBalance.json`,
+ * `costs.json`) rather than from estimates: 10 honey types, 75 research items
+ * (57 regular + 18 epic), 12 vehicle tiers, 5 building types.
+ */
+type Feature = {
+  art?: string
+  variant: HexVariant
+  title: string
+  description: string
+  isSpecial?: boolean
+}
+
+const features: Feature[] = [
   {
-    icon: Building2,
+    art: 'colony.svg',
+    variant: 'honey',
     title: '5 Buildings',
-    description: 'A Colony, up to 4 Hives, Storage, a Depot, and a Lab. Each with unique upgrade paths and strategy!',
-    gradient: 'from-amber-400 to-yellow-400',
+    description: 'A Colony, up to 4 Hives, Storage, a Depot and a Lab — each with its own upgrade path and its own trade-offs.',
   },
   {
-    icon: Droplets,
-    title: '10+ Honey Types',
-    description: 'From Clover to Manuka. Each more valuable than the last!',
-    gradient: 'from-yellow-400 to-orange-400',
+    art: 'honey-manuka.svg',
+    variant: 'wax',
+    title: '10 Honey Types',
+    description: 'From Wildflower and Clover all the way to Quantum and Temporal honey. Every unlock is worth more than the last.',
   },
   {
-    icon: FlaskConical,
-    title: '100+ Research Items',
-    description: 'Common and permanent Epic research upgrades. Unlock automation, larger capacity, faster progress!',
-    gradient: 'from-orange-400 to-amber-500',
+    art: 'research.svg',
+    variant: 'wax',
+    title: '75 Research Upgrades',
+    description: '57 regular upgrades across 13 tiers, plus 18 permanent Epic ones that survive reincarnation.',
   },
   {
-    icon: Sparkles,
-    title: 'Extra Boosts',
-    description: 'A list of fancy boosts to buzz you up! Purchase a variety to increase your farm\'s output!',
-    gradient: 'from-amber-500 to-yellow-500',
+    art: 'boost.svg',
+    variant: 'honey',
+    title: 'Stackable Boosts',
+    description: 'Frenzy your hives, double your cash, auto-spawn your bees. Stack boosts to send output through the roof.',
   },
   {
-    icon: Truck,
-    title: '17 Vehicle Tiers',
-    description: 'From trucks to quantum transporters, manage a fleet of endless growth! Scale your shipping capacity!',
-    gradient: 'from-yellow-500 to-amber-400',
+    art: 'tanker.svg',
+    variant: 'wax',
+    title: '12 Vehicle Tiers',
+    description: 'From a humble base cart to the Hexaloop tanker. Grow the fleet so shipping never becomes the bottleneck.',
   },
   {
-    icon: RefreshCw,
+    art: 'royal-jelly.svg',
+    variant: 'epic',
     title: 'Reincarnation',
-    description: 'Reincarnate to earn Royal Jelly. Gain permanent progress multipliers forever, and earn more cash!',
-    gradient: 'from-amber-400 to-orange-400',
+    description: 'When growth stalls, reset for Royal Jelly and permanent multipliers — then climb far faster the next time around.',
   },
   {
-    icon: Smartphone,
+    variant: 'wax',
     title: 'Play Anywhere',
-    description: 'A Telegram Mini App, just load and farm! No download required, just tap and play.',
-    gradient: 'from-orange-400 to-yellow-400',
+    description: 'Android, the iOS beta, or straight inside Telegram with no download. Your farm keeps producing while you are away.',
   },
   {
-    icon: Gem,
+    art: 'honeycomb.svg',
+    variant: 'epic',
     title: 'Play to Earn',
-    description: 'A feature coming soon to Royal Jelly collectors!',
-    gradient: 'from-purple-400 to-pink-400',
+    description: 'A feature coming soon to Royal Jelly collectors.',
     isSpecial: true,
   },
 ]
@@ -70,27 +74,20 @@ export function Features() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
   return (
     <section ref={sectionRef} className="py-20 sm:py-28 px-4 sm:px-6 white-section-drip relative overflow-hidden">
-      {/* Single flying bee */}
       <SectionBee delay={2} />
-      
+
       <div className="max-w-6xl mx-auto">
-        {/* Section title */}
         <h2
           className={`text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 mt-6 transition-all duration-700 font-honey text-gradient-title ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -106,63 +103,44 @@ export function Features() {
           Packed with features to keep you buzzing for hours
         </p>
 
-        {/* Feature cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {features.map((feature, index) => {
-            const Icon = feature.icon
-            const isSpecial = 'isSpecial' in feature && feature.isSpecial
-            
+            const isSpecial = feature.isSpecial
             return (
               <div
-                key={index}
+                key={feature.title}
                 className={`group relative p-6 rounded-2xl transition-all duration-500 card-hover
-                  ${isSpecial 
-                    ? 'bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 hover:bg-gradient-to-br hover:from-amber-400 hover:to-orange-400 hover:border-white' 
-                    : 'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/50 hover:border-amber-300'
+                  ${
+                    isSpecial
+                      ? 'bg-gradient-to-br from-purple-50 to-amber-50 border-2 border-purple-300/70 hover:border-purple-400'
+                      : 'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/50 hover:border-amber-300'
                   }
                   ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                 `}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Gradient overlay on hover for non-special cards */}
-                {!isSpecial && (
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 to-orange-400/0 group-hover:from-amber-400/10 group-hover:to-orange-400/10 transition-all duration-300" />
-                )}
-                
-                {/* Icon */}
-                <div
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-md transition-all duration-300
-                    ${isSpecial 
-                      ? `bg-gradient-to-br ${feature.gradient} group-hover:bg-white` 
-                      : `bg-gradient-to-br ${feature.gradient} group-hover:scale-110`
-                    }
-                  `}
-                >
-                  <Icon 
-                    className={`w-7 h-7 transition-all duration-300
-                      ${isSpecial 
-                        ? 'text-white group-hover:text-transparent group-hover:bg-gradient-to-br group-hover:from-amber-400 group-hover:to-orange-400 group-hover:bg-clip-text' 
-                        : 'text-white'
-                      }
-                    `} 
-                    strokeWidth={1.5} 
-                    style={isSpecial ? { 
-                      WebkitBackgroundClip: 'text',
-                    } : undefined}
-                  />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 to-orange-400/0 group-hover:from-amber-400/10 group-hover:to-orange-400/10 transition-all duration-300 pointer-events-none" />
+
+                {/* Real game artwork, framed in the game's own hexagon tile. */}
+                <div className="relative mb-4 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2">
+                  {feature.art ? (
+                    <GameIcon art={feature.art} alt="" variant={feature.variant} size={72} inset={0.62} />
+                  ) : (
+                    <HexTile size={72} variant={feature.variant}>
+                      <Smartphone className="w-8 h-8 text-amber-700" strokeWidth={1.75} />
+                    </HexTile>
+                  )}
                 </div>
-                
-                {/* Content */}
-                <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${isSpecial ? 'text-amber-800 group-hover:text-white' : 'text-amber-800'}`}>
+
+                <h3 className={`relative text-xl font-bold mb-2 ${isSpecial ? 'text-purple-800' : 'text-amber-800'}`}>
                   {feature.title}
                 </h3>
-                <p className={`text-sm leading-relaxed transition-colors duration-300 ${isSpecial ? 'text-amber-600 group-hover:text-white/90' : 'text-amber-600'}`}>
+                <p className={`relative text-sm leading-relaxed ${isSpecial ? 'text-purple-700/80' : 'text-amber-600'}`}>
                   {feature.description}
                 </p>
-                
-                {/* Coming soon badge for special card */}
+
                 {isSpecial && (
-                  <div className="absolute p-1 top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full group-hover:bg-white group-hover:text-amber-500 transition-colors duration-300">
+                  <div className="absolute top-3 right-3 bg-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
                     Soon
                   </div>
                 )}

@@ -1,5 +1,7 @@
 import { ChevronDown } from 'lucide-react'
 import { FlyingBees } from './FlyingBees'
+import { TELEGRAM_PLAY_URL } from '../links'
+import { StoreBadges } from './StoreBadges'
 
 export function Hero() {
   const scrollToContent = () => {
@@ -35,27 +37,25 @@ export function Hero() {
           An idle game where bees make you rich.
         </p>
 
-        {/* Store launch callout */}
+        {/* Store availability. Android has shipped, iOS is in open beta — each
+            badge carries its own status so neither overstates the other. */}
         <div className="mb-10 sm:mb-12 animate-fade-in animation-delay-300">
           <p className="text-amber-700 text-lg sm:text-xl mb-5 font-display font-semibold">
-            Launching in App Stores soon!
+            Out now on Android. iOS in open beta.
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <a href="#" className="cursor-not-allowed" onClick={(e) => e.preventDefault()}>
-              <img
-                src={`${import.meta.env.BASE_URL}AppStore.webp`}
-                alt="Download on the App Store"
-                className="h-12 sm:h-14 w-auto"
-              />
-            </a>
-            <a href="#" className="cursor-not-allowed" onClick={(e) => e.preventDefault()}>
-              <img
-                src={`${import.meta.env.BASE_URL}GooglePlay.webp`}
-                alt="Get it on Google Play"
-                className="h-12 sm:h-14 w-auto"
-              />
-            </a>
-          </div>
+          <StoreBadges />
+          <p className="mt-6 text-amber-600 text-sm sm:text-base">
+            Or{' '}
+            <a
+              href={TELEGRAM_PLAY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-telegram underline decoration-2 underline-offset-2 hover:text-amber-800 transition-colors"
+            >
+              play instantly on Telegram
+            </a>{' '}
+            — no download needed.
+          </p>
         </div>
 
         {/* Learn more scroll indicator */}

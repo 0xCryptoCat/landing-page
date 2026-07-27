@@ -9,7 +9,7 @@ const screenshots = [
   },
   {
     src: './screenshots/research.png',
-    caption: '100+ upgrades to unlock',
+    caption: '75 upgrades to unlock',
     alt: 'Research with upgrades',
   },
   {
@@ -34,7 +34,7 @@ const screenshots = [
   },
   {
     src: './screenshots/honey.png',
-    caption: 'Unlock unique honey types to farm',
+    caption: 'Unlock all 10 honey types',
     alt: 'New Honey Screen',
   },
 ]
