@@ -16,7 +16,6 @@ type Panel = {
   pills: string[]
   ctaLabel: string
   ctaHref: string
-  ctaNote: string
 }
 
 const PANELS: Panel[] = [
@@ -32,9 +31,8 @@ const PANELS: Panel[] = [
     ),
     body: 'The studio behind Honey, Inc. takes on client work: mobile apps, games, web platforms and crypto products, with project management and marketing in-house.',
     pills: ['Mobile apps', 'Games', 'Web & dApps'],
-    ctaLabel: 'Work with us',
+    ctaLabel: 'See the Lab',
     ctaHref: 'https://thehive.honeyinc.app',
-    ctaNote: 'thehive.honeyinc.app',
   },
   {
     id: 'invest',
@@ -49,9 +47,8 @@ const PANELS: Panel[] = [
     ),
     body: "Idle games are a $16B+ market, and nobody owns the hive. We're lining up the right people ahead of our first raise — see the opportunity and get on the list before the round opens.",
     pills: ['$16B+ idle market', 'Pre-raise', 'Deck on request'],
-    ctaLabel: 'Register investor interest',
+    ctaLabel: 'Want to invest?',
     ctaHref: 'https://thehive.honeyinc.app/investors',
-    ctaNote: "Not raising yet — we're building the list.",
   },
 ]
 
@@ -166,7 +163,6 @@ export function HiveLabsSection() {
                   >
                     {panel.ctaLabel}
                   </a>
-                  <span className="hl-cta-note">{panel.ctaNote}</span>
                 </div>
               </div>
             )

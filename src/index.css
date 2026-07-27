@@ -484,17 +484,9 @@ body {
   100% { left: 130%; }
 }
 
-.hl-cta-note {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  color: #6e6e73;
-  padding-left: 2px;
-}
-
 @media (max-width: 640px) {
   .hl-cta-col { width: 100%; }
   .hl-cta { width: 100%; justify-content: center; }
-  .hl-cta-note { align-self: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {

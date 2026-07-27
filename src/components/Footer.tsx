@@ -1,5 +1,15 @@
 import { useState } from 'react'
-import { Send, Twitter, Youtube, Music2, Loader2, Check } from 'lucide-react'
+import { Send, Twitter, Youtube, Music2, Users, Loader2, Check } from 'lucide-react'
+
+// Only accounts with a real url are rendered — an icon that links to "#" reads
+// as a broken site. Fill a url in here and the icon appears.
+const SOCIALS = [
+  { label: 'Telegram', url: 'https://t.me/honeyinc', Icon: Send, hover: 'hover:bg-telegram' },
+  { label: 'Community', url: 'https://t.me/theHiveGoop', Icon: Users, hover: 'hover:bg-telegram' },
+  { label: 'X', url: '', Icon: Twitter, hover: 'hover:bg-gray-800' },
+  { label: 'YouTube', url: '', Icon: Youtube, hover: 'hover:bg-red-600' },
+  { label: 'TikTok', url: '', Icon: Music2, hover: 'hover:bg-gray-800' },
+].filter((s) => s.url)
 
 // Supabase edge function URL
 const SUPABASE_URL = 'https://soglsvcfkrmuujxjmvld.supabase.co';
@@ -116,36 +126,18 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Social</h4>
             <div className="flex items-center gap-3">
-              <a
-                href="https://t.me/honeyinc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-amber-800 hover:bg-telegram rounded-full flex items-center justify-center transition-colors"
-                aria-label="Telegram"
-              >
-                <Send className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="Twitter (Coming Soon)"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="YouTube (Coming Soon)"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="TikTok (Coming Soon)"
-              >
-                <Music2 className="w-5 h-5" />
-              </a>
+              {SOCIALS.map(({ label, url, Icon, hover }) => (
+                <a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 bg-amber-800 ${hover} rounded-full flex items-center justify-center transition-colors`}
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
 
