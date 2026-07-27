@@ -210,3 +210,293 @@ body {
 .timeline-connector.active {
   background: linear-gradient(to bottom, #FFC107, #FF8F00);
 }
+
+/* ===========================================================
+   The Hive Labs alternating section
+   Two panels share one grid cell and cross-fade on a timer.
+   =========================================================== */
+
+.hl {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0b;
+  --hl-grad: linear-gradient(100deg, #ffc107, #ff8f00 55%, #ff6d00);
+}
+
+/* Drifting honeycomb lattice + warm glow behind the content */
+.hl-lattice {
+  position: absolute;
+  inset: -40px;
+  opacity: 0.35;
+  animation: hlDrift 60s linear infinite;
+  pointer-events: none;
+}
+
+.hl-glow {
+  position: absolute;
+  top: -160px;
+  left: 12%;
+  width: 620px;
+  height: 420px;
+  background: radial-gradient(ellipse at center, rgba(255, 143, 0, 0.18), transparent 65%);
+  animation: hlGlow 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hlDrift {
+  from { background-position: 0 0; }
+  to { background-position: 336px 588px; }
+}
+
+@keyframes hlGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.hl-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 44px 24px 52px;
+}
+
+/* ---- Tabs / progress ---- */
+.hl-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.hl-tab {
+  position: relative;
+  overflow: hidden;
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #a1a1a6;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 7px 16px;
+  border-radius: 980px;
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.hl-tab:hover { color: #f5f5f7; background: rgba(255, 255, 255, 0.08); }
+
+.hl-tab[aria-selected='true'] {
+  color: #f5f5f7;
+  border-color: rgba(255, 143, 0, 0.45);
+  background: rgba(255, 143, 0, 0.1);
+}
+
+/* Fills across the dwell time so the switch never feels abrupt */
+.hl-tab-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left;
+  background: var(--hl-grad);
+  animation: hlProgress linear forwards;
+}
+
+.hl[data-paused='true'] .hl-tab-progress { animation-play-state: paused; }
+
+@keyframes hlProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ---- Panel stage ---- */
+.hl-stage { display: grid; }
+
+.hl-panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.32, 0.72, 0, 1),
+    filter 0.55s ease, visibility 0s;
+}
+
+/* Hold visibility until the fade-out finishes, otherwise the outgoing panel
+   snaps away and the stage flashes blank mid-crossfade. */
+.hl-panel[data-active='false'] {
+  opacity: 0;
+  transform: translateY(14px) scale(0.99);
+  filter: blur(6px);
+  pointer-events: none;
+  visibility: hidden;
+  transition-delay: 0s, 0s, 0s, 0.55s;
+}
+
+.hl-panel[data-active='true'] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  visibility: visible;
+}
+
+/* Children rise in sequence each time a panel becomes active */
+.hl-panel[data-active='true'] > * > .hl-stagger,
+.hl-panel[data-active='true'] > .hl-stagger {
+  animation: hlRise 0.6s cubic-bezier(0.32, 0.72, 0, 1) backwards;
+}
+
+.hl-panel[data-active='true'] .hl-stagger:nth-child(1) { animation-delay: 0.04s; }
+.hl-panel[data-active='true'] .hl-stagger:nth-child(2) { animation-delay: 0.12s; }
+.hl-panel[data-active='true'] .hl-stagger:nth-child(3) { animation-delay: 0.2s; }
+.hl-panel[data-active='true'] .hl-stagger:nth-child(4) { animation-delay: 0.28s; }
+
+@keyframes hlRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hl-copy { min-width: 260px; flex: 1 1 340px; }
+
+.hl-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6e6e73;
+  margin: 0 0 10px;
+}
+
+.hl-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff8f00;
+  box-shadow: 0 0 0 0 rgba(255, 143, 0, 0.6);
+  animation: hlPing 2.2s ease-out infinite;
+}
+
+@keyframes hlPing {
+  0% { box-shadow: 0 0 0 0 rgba(255, 143, 0, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(255, 143, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 143, 0, 0); }
+}
+
+.hl-title {
+  color: #f5f5f7;
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.hl-accent {
+  background: var(--hl-grad);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hlShift 6s ease infinite;
+}
+
+@keyframes hlShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hl-body {
+  color: #a1a1a6;
+  margin: 12px 0 0;
+  font-size: 15px;
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+.hl-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+
+.hl-pill {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: #a1a1a6;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 5px 11px;
+  border-radius: 980px;
+  white-space: nowrap;
+}
+
+/* ---- CTA ---- */
+.hl-cta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hl-cta {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--hl-grad);
+  color: #1a1200;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 13px 28px;
+  border-radius: 980px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.25s;
+}
+
+.hl-cta:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 34px -10px rgba(255, 143, 0, 0.75);
+}
+
+.hl-cta:active { transform: scale(0.98); }
+
+/* Slow sheen sweep so the button keeps drawing the eye */
+.hl-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+  animation: hlSheen 4.5s ease-in-out infinite;
+}
+
+@keyframes hlSheen {
+  0%, 55% { left: -60%; }
+  100% { left: 130%; }
+}
+
+@media (max-width: 640px) {
+  .hl-cta-col { width: 100%; }
+  .hl-cta { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hl-lattice,
+  .hl-glow,
+  .hl-dot,
+  .hl-accent,
+  .hl-cta::after { animation: none; }
+  .hl-panel { transition: opacity 0.2s ease; }
+  .hl-panel[data-active='false'] { transform: none; filter: none; }
+  .hl-panel[data-active='true'] > * > .hl-stagger,
+  .hl-panel[data-active='true'] > .hl-stagger { animation: none; }
+}

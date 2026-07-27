@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/bee.svg" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+
+  <title>Privacy Policy — Honey, Inc.</title>
+  <meta name="description" content="Privacy Policy for the Honey, Inc. idle bee farm game. How we collect, use, share, and protect your information." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://honeyinc.app/privacy.html" />
+  <meta name="theme-color" content="#FFC107" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Privacy Policy — Honey, Inc. 🐝" />
+  <meta property="og:description" content="How Honey, Inc. collects, uses, and protects your information." />
+  <meta property="og:image" content="https://honeyinc.app/social-preview.png" />
+  <meta property="og:url" content="https://honeyinc.app/privacy.html" />
+  <meta property="og:type" content="article" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/honey_jar/TfFancy Free Trial.woff2" as="font" type="font/woff2" crossorigin />
+
+  <style>
+    @font-face {
+      font-family: 'Honey';
+      src: url('/fonts/honey_jar/TfFancy Free Trial.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    :root {
+      --honey: #ffc107;
+      --honey-deep: #ff8f00;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --amber-700: #b45309;
+      --amber-900: #78350f;
+      --cream: #fffbeb;
+      --cream-2: #fef3c7;
+      --card: #ffffff;
+      --text: #4a3210;
+      --muted: #92722f;
+      --border: #fde68a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      font-family: 'Comfortaa', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 100% -10%, #fff7d6 0%, rgba(255,247,214,0) 60%),
+        linear-gradient(to bottom, var(--cream) 0%, #fff7e0 40%, var(--cream-2) 100%);
+      min-height: 100vh;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Top bar ---- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1.5rem;
+      background: rgba(255, 251, 235, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--amber-900);
+    }
+    .brand img { width: 34px; height: 34px; }
+    .brand .name {
+      font-family: 'Honey', 'Comic Sans MS', cursive, sans-serif;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--amber-700);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+    .back-link:hover {
+      background: var(--honey);
+      color: var(--amber-900);
+      box-shadow: 0 6px 16px -6px rgba(217,119,6,0.5);
+      transform: translateY(-1px);
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 1rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Honey', 'Comic Sans MS', cursive, sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      color: var(--amber-900);
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+    .hero .lede {
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+    .updated {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--amber-700);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    /* ---- Layout ---- */
+    .layout {
+      max-width: 1080px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ---- TOC ---- */
+    nav.toc {
+      position: sticky;
+      top: 86px;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem 0.75rem;
+    }
+    nav.toc .toc-title {
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber-600);
+      padding: 0 0.6rem 0.6rem;
+    }
+    nav.toc ol { list-style: none; counter-reset: toc; }
+    nav.toc li { counter-increment: toc; }
+    nav.toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.84rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      border-left: 2px solid transparent;
+      transition: all 0.15s ease;
+    }
+    nav.toc a::before {
+      content: counter(toc) ". ";
+      color: var(--amber-500);
+      font-weight: 600;
+    }
+    nav.toc a:hover {
+      background: var(--cream-2);
+      color: var(--amber-900);
+      border-left-color: var(--honey);
+    }
+
+    /* ---- Content ---- */
+    main { min-width: 0; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: clamp(1.4rem, 4vw, 2.6rem);
+      box-shadow: 0 20px 50px -30px rgba(120,83,15,0.5);
+    }
+    .intro p { margin-bottom: 1rem; }
+    .intro .contact-strip {
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      font-size: 0.92rem;
+    }
+    .intro .contact-strip a { color: var(--amber-700); font-weight: 600; }
+
+    section.policy { scroll-margin-top: 90px; padding-top: 2rem; }
+    section.policy + section.policy { border-top: 1px dashed var(--border); }
+
+    section.policy h2 {
+      font-size: 1.4rem;
+      color: var(--amber-900);
+      margin-bottom: 0.9rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+    section.policy h2 .num {
+      font-family: 'Honey', cursive;
+      color: var(--honey-deep);
+      font-size: 1.5rem;
+      flex: none;
+    }
+    section.policy h3 {
+      font-size: 1.02rem;
+      color: var(--amber-700);
+      margin: 1.3rem 0 0.5rem;
+    }
+    section.policy p { margin-bottom: 0.85rem; }
+    section.policy ul { list-style: none; margin: 0.4rem 0 1rem; }
+    section.policy ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.45rem;
+    }
+    section.policy ul li::before {
+      content: "🍯";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.8rem;
+    }
+    section.policy a { color: var(--amber-700); font-weight: 600; }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin: 0.6rem 0 1rem;
+    }
+    .rights-grid .right {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 0.85rem 1rem;
+    }
+    .rights-grid .right b { display: block; color: var(--amber-900); margin-bottom: 0.2rem; }
+    .rights-grid .right span { font-size: 0.88rem; color: var(--muted); }
+
+    .contact-card {
+      margin-top: 0.5rem;
+      background: linear-gradient(135deg, #fff8e1, #fde68a);
+      border: 1px solid var(--amber-500);
+      border-radius: 1rem;
+      padding: 1.2rem 1.4rem;
+    }
+    .contact-card .org { font-family: 'Honey', cursive; font-size: 1.3rem; color: var(--amber-900); }
+    .contact-card a { color: var(--amber-700); font-weight: 600; }
+
+    /* ---- Footer ---- */
+    footer.page {
+      text-align: center;
+      padding: 2.5rem 1.5rem 3rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer.page a { color: var(--amber-700); font-weight: 600; text-decoration: none; }
+    footer.page .links { margin-bottom: 0.6rem; }
+    footer.page .links a { margin: 0 0.6rem; }
+
+    .to-top {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--honey);
+      color: var(--amber-900);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 24px -8px rgba(217,119,6,0.7);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.2s ease;
+      z-index: 60;
+    }
+    .to-top.show { opacity: 1; pointer-events: auto; }
+    .to-top:hover { transform: translateY(-2px); }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; gap: 1.25rem; }
+      nav.toc { position: static; max-height: none; }
+      nav.toc ol {
+        columns: 2;
+        column-gap: 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      nav.toc ol { columns: 1; }
+      .brand .name { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <img src="/icon.png" alt="Honey, Inc. logo" />
+      <span class="name">Honey, Inc.</span>
+    </a>
+    <a class="back-link" href="/">&larr; Back to site</a>
+  </header>
+
+  <div class="hero">
+    <h1>Privacy Policy</h1>
+    <p class="lede">How we collect, use, share, and protect your information when you play Honey, Inc.</p>
+    <div class="updated">Last updated: May 20, 2026</div>
+  </div>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Table of contents">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#s1">Information We Collect</a></li>
+        <li><a href="#s2">How We Use Your Information</a></li>
+        <li><a href="#s3">Legal Bases for Processing</a></li>
+        <li><a href="#s4">In-App Purchases &amp; Payments</a></li>
+        <li><a href="#s5">Advertising</a></li>
+        <li><a href="#s6">Analytics</a></li>
+        <li><a href="#s7">Cookies &amp; Similar Tech</a></li>
+        <li><a href="#s8">Sharing of Information</a></li>
+        <li><a href="#s9">International Data Transfers</a></li>
+        <li><a href="#s10">Data Retention</a></li>
+        <li><a href="#s11">Children's Privacy</a></li>
+        <li><a href="#s12">Your Privacy Rights</a></li>
+        <li><a href="#s13">California Privacy Rights</a></li>
+        <li><a href="#s14">EEA, UK &amp; Switzerland</a></li>
+        <li><a href="#s15">Security</a></li>
+        <li><a href="#s16">Third-Party Services</a></li>
+        <li><a href="#s17">User Account Deletion</a></li>
+        <li><a href="#s18">Do Not Track</a></li>
+        <li><a href="#s19">Changes to This Policy</a></li>
+        <li><a href="#s20">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <article class="card">
+        <div class="intro">
+          <p>Honey Inc. (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates the Honey Inc. mobile game for iOS and Android and related online services (collectively, the &ldquo;Services&rdquo;). This Privacy Policy describes how we collect, use, share, and protect information when you use the Services.</p>
+          <p>By using the Services, you agree to the collection and use of information as described in this Policy. If you do not agree, please do not use the Services.</p>
+          <div class="contact-strip">
+            <strong>Contact:</strong> <a href="https://honeyinc.app">honeyinc.app</a> &nbsp;·&nbsp; <a href="mailto:becomethehive@gmail.com">becomethehive@gmail.com</a>
+          </div>
+        </div>
+
+        <section class="policy" id="s1">
+          <h2><span class="num">1</span> Information We Collect</h2>
+          <p>We may collect information directly from you, automatically through your use of the Services, and from third-party providers.</p>
+
+          <h3>A. Information You Provide</h3>
+          <p>Depending on how you use Honey Inc., we may collect:</p>
+          <ul>
+            <li>Display name or profile name (for example, from Apple or Google sign-in, or a name you choose where available)</li>
+            <li>Email address (if provided by you or your sign-in provider; Apple may provide a private relay address)</li>
+            <li>Account and authentication information (managed through Firebase Authentication; we do not receive your Apple or Google password)</li>
+            <li>Guest play: if you use Guest mode, we create an anonymous account identifier without requiring an email or name</li>
+            <li>Referral or invite codes you voluntarily enter</li>
+            <li>Customer support communications (including information you send when contacting us for help)</li>
+            <li>Survey responses and feedback you choose to submit</li>
+            <li>User-generated content you submit through the Services (where such features are offered)</li>
+            <li>Information you provide when participating in promotions, contests, or events</li>
+            <li>Purchase-related information necessary to deliver in-app content (processed largely by app stores; see Section 4)</li>
+          </ul>
+
+          <h3>B. Information Collected Automatically</h3>
+          <p>When you use our Services, we may automatically collect:</p>
+          <p><b>Device Information</b></p>
+          <ul>
+            <li>Device model and manufacturer</li>
+            <li>Operating system and version</li>
+            <li>Device language and region settings</li>
+            <li>Mobile network information (where available)</li>
+            <li>IP address (received when your device connects to our servers or advertising partners)</li>
+            <li>Platform (iOS or Android)</li>
+          </ul>
+          <p><b>Identifiers</b></p>
+          <ul>
+            <li>Firebase user ID (including anonymous IDs for Guest accounts)</li>
+            <li>App instance and session identifiers used by our service providers</li>
+            <li>Advertising identifiers (such as IDFA on iOS or GAID on Android), where available and permitted by your device settings and applicable law</li>
+          </ul>
+          <p><b>Gameplay Information</b></p>
+          <ul>
+            <li>Game progress, buildings, bees, vehicles, research, and other in-game state</li>
+            <li>In-game currency and resources (including cash, farm value, Honeycombs, Royal Jelly, and related balances)</li>
+            <li>Achievements, prestige or reincarnation data, and progression history</li>
+            <li>Session duration and play time</li>
+            <li>In-app purchases and virtual item transactions (see Section 4)</li>
+            <li>Interaction with game features (including ads, referrals, mail, and rewards)</li>
+            <li>Preferences and settings (such as audio volume and performance options)</li>
+          </ul>
+          <p><b>Storage on Your Device</b></p>
+          <ul>
+            <li>We store game save data and certain preferences locally on your device (for example, using on-device storage such as AsyncStorage) so the game can run and remember your progress.</li>
+          </ul>
+          <p><b>Cloud Data (Linked Accounts)</b></p>
+          <ul>
+            <li>If you sign in with Apple or Google, we may store game saves, server-backed currency, referral data, transaction logs, and related account information in Google Firebase (Firestore and Cloud Functions).</li>
+          </ul>
+          <p><b>Usage Data</b></p>
+          <ul>
+            <li>App version</li>
+            <li>Login and activity timestamps (such as last login or last active time)</li>
+            <li>Server and function logs related to account sync, currency validation, referrals, and ad rewards</li>
+            <li>Diagnostic and performance information where collected by our service providers</li>
+          </ul>
+          <p><b>Advertising Data</b></p>
+          <ul>
+            <li>Advertising identifiers</li>
+            <li>Ad impressions, interactions, and completions</li>
+            <li>Rewarded ad watch duration and reward type (logged on our servers when you complete rewarded ads)</li>
+            <li>Campaign or attribution data from advertising partners, where applicable</li>
+          </ul>
+
+          <h3>C. Information from Third Parties</h3>
+          <p>We may receive information from:</p>
+          <ul>
+            <li>Apple (Sign in with Apple): user identifier and, if you choose to share them, email and name</li>
+            <li>Google (Sign in with Google): user identifier, email, display name, and profile photo URL if available</li>
+            <li>Google Firebase: authentication, database, and cloud function services used to operate accounts and game data</li>
+            <li>Google AdMob: advertising delivery and measurement</li>
+            <li>Mobile app stores (Apple App Store, Google Play): purchase and subscription status needed to verify transactions</li>
+            <li>Analytics and diagnostics providers we or our partners use to understand usage and improve stability</li>
+            <li>Payment processors and platforms that handle in-app purchases on our behalf</li>
+            <li>Social media or authentication platforms, if you choose to connect them where such options are offered</li>
+          </ul>
+          <p>We do not control how third parties collect or use their own information. Their practices are governed by their privacy policies.</p>
+        </section>
+
+        <section class="policy" id="s2">
+          <h2><span class="num">2</span> How We Use Your Information</h2>
+          <p>We use collected information to:</p>
+          <h3>Provide and Operate the Services</h3>
+          <ul>
+            <li>Create and maintain accounts (including Guest and linked Apple/Google accounts)</li>
+            <li>Save and restore game progress (locally and, for linked accounts, in the cloud)</li>
+            <li>Deliver gameplay features, virtual items, and updates</li>
+            <li>Process in-app purchases and deliver purchased content</li>
+            <li>Operate referrals, rewards, mail, and promotional features</li>
+            <li>Provide customer support and respond to your requests</li>
+          </ul>
+          <h3>Improve the Services</h3>
+          <ul>
+            <li>Analyze gameplay trends and feature usage</li>
+            <li>Fix bugs, crashes, and technical issues</li>
+            <li>Improve game balance, performance, and features</li>
+            <li>Develop new content and events</li>
+          </ul>
+          <h3>Personalize User Experience</h3>
+          <ul>
+            <li>Customize gameplay and in-game experiences where appropriate</li>
+            <li>Deliver content and offers relevant to your use of the Services</li>
+          </ul>
+          <h3>Marketing and Communications</h3>
+          <ul>
+            <li>Send service-related notifications (including account, security, or policy updates)</li>
+            <li>Inform users about updates, events, and new features</li>
+            <li>Send promotional communications where permitted by law and your preferences</li>
+          </ul>
+          <h3>Advertising</h3>
+          <ul>
+            <li>Display advertisements through partners such as Google AdMob</li>
+            <li>Measure ad performance and grant in-game rewards for completed ads where offered</li>
+          </ul>
+          <h3>Security and Compliance</h3>
+          <ul>
+            <li>Prevent fraud, cheating, and abuse</li>
+            <li>Enforce our Terms of Service</li>
+            <li>Protect users and the Services</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+        </section>
+
+        <section class="policy" id="s3">
+          <h2><span class="num">3</span> Legal Bases for Processing (EEA, UK, and Similar Jurisdictions)</h2>
+          <p>Where applicable, we process personal information based on one or more of the following legal grounds:</p>
+          <ul>
+            <li>Consent</li>
+            <li>Performance of a contract</li>
+            <li>Compliance with legal obligations</li>
+            <li>Legitimate interests (such as securing the Services, preventing abuse, and improving the game)</li>
+            <li>Protection of vital interests</li>
+          </ul>
+          <p>You may withdraw consent at any time where processing is based on consent, without affecting the lawfulness of processing before withdrawal.</p>
+        </section>
+
+        <section class="policy" id="s4">
+          <h2><span class="num">4</span> In-App Purchases and Payment Information</h2>
+          <p>Honey Inc. may offer in-app purchases and virtual currency through third-party platforms, including:</p>
+          <ul>
+            <li>Apple App Store</li>
+            <li>Google Play Store</li>
+            <li>Other authorized payment providers we may use in the future</li>
+          </ul>
+          <p>We do not generally receive or store full payment card or bank account details. Payment processing is handled by the applicable platform or payment processor according to their privacy policies.</p>
+          <p>We may receive transaction-related information (such as purchase identifiers, product IDs, purchase time, and subscription status) necessary to verify purchases, prevent fraud, and provide purchased or unlocked content.</p>
+        </section>
+
+        <section class="policy" id="s5">
+          <h2><span class="num">5</span> Advertising</h2>
+          <p>Honey Inc. may display advertisements provided by third-party advertising partners, including Google AdMob (rewarded and interstitial formats).</p>
+          <p>Advertising partners may collect information such as:</p>
+          <ul>
+            <li>Advertising identifiers</li>
+            <li>Device information</li>
+            <li>IP address</li>
+            <li>Usage and ad interaction information</li>
+            <li>Approximate location derived from IP address</li>
+          </ul>
+          <p>This information may be used to:</p>
+          <ul>
+            <li>Deliver and measure advertisements</li>
+            <li>Prevent advertising fraud</li>
+            <li>Provide personalized advertising where permitted by law and your device settings</li>
+          </ul>
+          <p>On iOS, tracking for personalized ads may be limited unless you grant permission through Apple's App Tracking Transparency framework where we implement it. You may also limit personalized advertising through your device settings (for example, &ldquo;Limit Ad Tracking&rdquo; on iOS or ad personalization settings on Android).</p>
+          <p>When you complete rewarded advertisements, we may log reward details and watch duration on our servers to grant in-game benefits and maintain fair use limits.</p>
+        </section>
+
+        <section class="policy" id="s6">
+          <h2><span class="num">6</span> Analytics</h2>
+          <p>We use analytics and operational data to understand how players use the Services and to keep them running reliably. This may include:</p>
+          <ul>
+            <li>Device and app information</li>
+            <li>Session and gameplay behavior</li>
+            <li>Feature usage and progression metrics</li>
+            <li>Crash, error, and performance data from our service providers</li>
+          </ul>
+          <p>Primary systems involved in understanding usage today include our own server logs (Firebase Cloud Functions and Firestore), advertising partner reporting (AdMob), and analytics or diagnostics tools we enable from time to time. Analytics data helps us improve performance, functionality, security, and player experience.</p>
+        </section>
+
+        <section class="policy" id="s7">
+          <h2><span class="num">7</span> Cookies and Similar Technologies</h2>
+          <p>Honey Inc. is primarily a mobile application. We and our partners may use technologies such as:</p>
+          <ul>
+            <li>Software development kits (SDKs)</li>
+            <li>Local and on-device storage</li>
+            <li>Pixels or similar technologies in linked web pages (if any)</li>
+            <li>Cookies, where you access web-based portions of the Services</li>
+          </ul>
+          <p>These technologies help us:</p>
+          <ul>
+            <li>Operate the Services and maintain sessions</li>
+            <li>Remember preferences and game progress</li>
+            <li>Analyze usage and diagnose problems</li>
+            <li>Improve functionality</li>
+            <li>Measure advertising performance</li>
+          </ul>
+          <p>You may manage certain tracking or advertising preferences through your device or account settings and, where applicable, in-app choices.</p>
+        </section>
+
+        <section class="policy" id="s8">
+          <h2><span class="num">8</span> Sharing of Information</h2>
+          <p>We may share information with:</p>
+          <h3>Service Providers</h3>
+          <p>Companies that assist us with hosting, cloud infrastructure, authentication, databases, analytics, customer support, security, payment processing, advertising, and communications. These providers process information on our behalf under contractual obligations appropriate to their role.</p>
+          <p>Key categories of providers for Honey Inc. include Google (Firebase, AdMob, Google Sign-In), Apple (Sign in with Apple), and mobile app store operators.</p>
+          <h3>Business Transfers</h3>
+          <p>If Honey Inc. is involved in a merger, acquisition, financing, asset sale, reorganization, or similar transaction, information may be transferred as part of that transaction, subject to applicable law.</p>
+          <h3>Legal Requirements</h3>
+          <p>We may disclose information when required by law or when we reasonably believe disclosure is necessary to:</p>
+          <ul>
+            <li>Comply with legal obligations or lawful requests</li>
+            <li>Protect the rights, property, or safety of Honey Inc., our users, or others</li>
+            <li>Investigate fraud, security issues, or abuse</li>
+            <li>Enforce our agreements and policies</li>
+          </ul>
+          <h3>With Your Consent</h3>
+          <p>We may share information for other purposes when you provide consent or direct us to do so.</p>
+        </section>
+
+        <section class="policy" id="s9">
+          <h2><span class="num">9</span> International Data Transfers</h2>
+          <p>Your information may be processed and stored in countries other than your country of residence, including countries where our service providers operate (for example, the United States and countries where Google cloud regions are located). Our Firebase Cloud Functions for Honey Inc. are configured in the europe-west1 region; other Firebase services may process data in additional locations according to Google's infrastructure.</p>
+          <p>Where required by law, we implement appropriate safeguards for international transfers, which may include standard contractual clauses, adequacy decisions, or other legally recognized mechanisms.</p>
+        </section>
+
+        <section class="policy" id="s10">
+          <h2><span class="num">10</span> Data Retention</h2>
+          <p>We retain personal information only for as long as necessary to:</p>
+          <ul>
+            <li>Provide the Services</li>
+            <li>Fulfill the purposes described in this Policy</li>
+            <li>Comply with legal obligations</li>
+            <li>Resolve disputes and enforce agreements</li>
+            <li>Maintain security and prevent abuse</li>
+          </ul>
+          <p>Retention periods vary by data type. For example, account and gameplay data may be kept while your account is active; certain transaction or anti-fraud records may be retained longer where required by law or legitimate business need. Guest data stored only on your device is removed when you uninstall the app or clear app data, subject to how your device handles storage.</p>
+        </section>
+
+        <section class="policy" id="s11">
+          <h2><span class="num">11</span> Children's Privacy</h2>
+          <p>Honey Inc. is not directed toward children under the age required by applicable law in their jurisdiction without appropriate parental consent.</p>
+          <p>If we become aware that personal information has been collected from a child without required consent, we will take reasonable steps to delete the information.</p>
+          <p>Parents or guardians who believe their child has provided personal information may contact us at <a href="mailto:becomethehive@gmail.com">becomethehive@gmail.com</a>.</p>
+          <h3>Additional Protections for Minors</h3>
+          <p>Where required by applicable law:</p>
+          <ul>
+            <li>Personalized advertising may be disabled or limited for minors.</li>
+            <li>Data collection may be restricted.</li>
+            <li>Additional parental controls may be provided.</li>
+          </ul>
+        </section>
+
+        <section class="policy" id="s12">
+          <h2><span class="num">12</span> Your Privacy Rights</h2>
+          <p>Depending on your location, you may have rights including:</p>
+          <div class="rights-grid">
+            <div class="right"><b>Right to Access</b><span>Request access to personal information we hold about you.</span></div>
+            <div class="right"><b>Right to Correction</b><span>Request correction of inaccurate information.</span></div>
+            <div class="right"><b>Right to Deletion</b><span>Request deletion of personal information.</span></div>
+            <div class="right"><b>Right to Restrict Processing</b><span>Request limitation of certain processing activities.</span></div>
+            <div class="right"><b>Right to Data Portability</b><span>Receive certain information in a portable format.</span></div>
+            <div class="right"><b>Right to Object</b><span>Object to certain processing activities.</span></div>
+            <div class="right"><b>Right to Withdraw Consent</b><span>Withdraw previously provided consent.</span></div>
+            <div class="right"><b>Right to Non-Discrimination</b><span>Exercise privacy rights without unlawful discrimination.</span></div>
+          </div>
+          <p>To exercise these rights, contact us using the details in Section 20. We may need to verify your identity before fulfilling a request.</p>
+        </section>
+
+        <section class="policy" id="s13">
+          <h2><span class="num">13</span> California Privacy Rights</h2>
+          <p>For residents of California, applicable laws may provide additional rights regarding personal information, including rights to:</p>
+          <ul>
+            <li>Know what personal information is collected, used, shared, or sold</li>
+            <li>Request deletion of personal information</li>
+            <li>Correct inaccurate personal information</li>
+            <li>Opt out of certain sharing for cross-context behavioral advertising, where applicable</li>
+            <li>Limit the use of sensitive personal information where applicable</li>
+          </ul>
+          <p>Requests may be submitted through the contact information in Section 20. We will not discriminate against you for exercising privacy rights.</p>
+        </section>
+
+        <section class="policy" id="s14">
+          <h2><span class="num">14</span> European Economic Area, United Kingdom, and Switzerland</h2>
+          <p>Individuals located in these regions may have rights under applicable privacy laws, including access, rectification, erasure, restriction, portability, objection, and the right to lodge a complaint with a supervisory authority.</p>
+          <p>Our legal bases for processing are described in Section 3. You may contact your local data protection authority if you believe your rights have been violated.</p>
+        </section>
+
+        <section class="policy" id="s15">
+          <h2><span class="num">15</span> Security</h2>
+          <p>We implement reasonable administrative, technical, and organizational measures designed to protect personal information from unauthorized access, loss, misuse, alteration, disclosure, or destruction.</p>
+          <p>However, no method of electronic storage or transmission over the Internet is completely secure, and we cannot guarantee absolute security.</p>
+        </section>
+
+        <section class="policy" id="s16">
+          <h2><span class="num">16</span> Third-Party Services</h2>
+          <p>Honey Inc. may contain links to third-party websites, services, or applications, or integrate third-party sign-in, payment, or advertising services.</p>
+          <p>We are not responsible for the privacy practices of third parties. Users should review the privacy policies of those third parties before providing information to them.</p>
+        </section>
+
+        <section class="policy" id="s17">
+          <h2><span class="num">17</span> User Account Deletion</h2>
+          <p>You may request deletion of your account and associated personal information by:</p>
+          <ul>
+            <li>Using in-app account deletion tools, where available</li>
+            <li>Contacting us at <a href="mailto:becomethehive@gmail.com">becomethehive@gmail.com</a></li>
+          </ul>
+          <p>Upon verified request, we will delete or anonymize personal information associated with your account, except where we must retain certain information for legal compliance, dispute resolution, security, anti-fraud purposes, or enforcement of our agreements.</p>
+          <p>If you use Guest mode only, deleting the app or clearing app data from your device removes locally stored progress; contact us if you also need assistance with any server-side anonymous identifiers.</p>
+        </section>
+
+        <section class="policy" id="s18">
+          <h2><span class="num">18</span> Do Not Track</h2>
+          <p>Some browsers and devices provide &ldquo;Do Not Track&rdquo; or similar signals. Because there is no universally accepted standard for responding to these signals across all platforms, Honey Inc. may not respond to all such requests in every context. You can manage advertising and tracking preferences through your device settings as described in this Policy.</p>
+        </section>
+
+        <section class="policy" id="s19">
+          <h2><span class="num">19</span> Changes to This Privacy Policy</h2>
+          <p>We may update this Privacy Policy from time to time.</p>
+          <p>When changes are made:</p>
+          <ul>
+            <li>The &ldquo;Last Updated&rdquo; date at the top will be revised.</li>
+            <li>Significant changes may be communicated through the Services, app store listings, or other appropriate means.</li>
+          </ul>
+          <p>Continued use of the Services after the effective date of an updated Policy constitutes acceptance of the revised Privacy Policy, except where further consent is required by law.</p>
+        </section>
+
+        <section class="policy" id="s20">
+          <h2><span class="num">20</span> Contact Us</h2>
+          <p>If you have questions about this Privacy Policy or our privacy practices, contact us at:</p>
+          <div class="contact-card">
+            <div class="org">Honey, Inc.</div>
+            <p>Website: <a href="https://honeyinc.app">honeyinc.app</a><br />
+            Email: <a href="mailto:becomethehive@gmail.com">becomethehive@gmail.com</a></p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer class="page">
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="https://t.me/honeyincbot/play">Play on Telegram</a>
+      <a href="mailto:becomethehive@gmail.com">Contact</a>
+    </div>
+    <p>&copy; <span id="year">2026</span> Honey, Inc. · Made with 🍯 for bee tycoons.</p>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">&uarr;</button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 600) { toTop.classList.add('show'); }
+      else { toTop.classList.remove('show'); }
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

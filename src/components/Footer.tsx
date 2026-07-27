@@ -1,10 +1,20 @@
 import { useState } from 'react'
-import { Send, Twitter, Youtube, Music2, Loader2, Check } from 'lucide-react'
+import { Send, Twitter, Youtube, Music2, Users, Loader2, Check } from 'lucide-react'
+
+// Only accounts with a real url are rendered — an icon that links to "#" reads
+// as a broken site. Fill a url in here and the icon appears.
+const SOCIALS = [
+  { label: 'Telegram', url: 'https://t.me/honeyinc', Icon: Send, hover: 'hover:bg-telegram' },
+  { label: 'Community', url: 'https://t.me/theHiveGoop', Icon: Users, hover: 'hover:bg-telegram' },
+  { label: 'X', url: '', Icon: Twitter, hover: 'hover:bg-gray-800' },
+  { label: 'YouTube', url: '', Icon: Youtube, hover: 'hover:bg-red-600' },
+  { label: 'TikTok', url: '', Icon: Music2, hover: 'hover:bg-gray-800' },
+].filter((s) => s.url)
 
 // Supabase edge function URL
-const NEWSLETTER_SIGNUP_URL = import.meta.env.VITE_SUPABASE_URL 
-  ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/newsletter-signup`
-  : 'https://bhwkgpgtcvpgwvedwfez.supabase.co/functions/v1/newsletter-signup';
+const SUPABASE_URL = 'https://soglsvcfkrmuujxjmvld.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvZ2xzdmNma3JtdXVqeGptdmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzNzc4NTIsImV4cCI6MjA3ODk1Mzg1Mn0.CNiFc6S-pXvRD6k6Ri6DDVHx80EiWE9xrpbWTdw-VY0';
+const NEWSLETTER_SIGNUP_URL = `${SUPABASE_URL}/functions/v1/newsletter-signup`;
 
 export function Footer() {
   const [email, setEmail] = useState('')
@@ -26,7 +36,11 @@ export function Footer() {
     try {
       const response = await fetch(NEWSLETTER_SIGNUP_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        },
         body: JSON.stringify({ email: email.trim(), source: 'landing-page-footer' }),
       })
 
@@ -86,8 +100,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors opacity-50">
+                <a href="/privacy.html" className="hover:text-white transition-colors">
                   Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://thehive.honeyinc.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  The Hive Labs
                 </a>
               </li>
               <li>
@@ -102,36 +126,18 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Social</h4>
             <div className="flex items-center gap-3">
-              <a
-                href="https://t.me/honeyinc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-amber-800 hover:bg-telegram rounded-full flex items-center justify-center transition-colors"
-                aria-label="Telegram"
-              >
-                <Send className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="Twitter (Coming Soon)"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="YouTube (Coming Soon)"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-amber-800 hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors opacity-50"
-                aria-label="TikTok (Coming Soon)"
-              >
-                <Music2 className="w-5 h-5" />
-              </a>
+              {SOCIALS.map(({ label, url, Icon, hover }) => (
+                <a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 bg-amber-800 ${hover} rounded-full flex items-center justify-center transition-colors`}
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
 
