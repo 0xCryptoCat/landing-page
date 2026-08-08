@@ -3,37 +3,37 @@ import { ChevronLeft, ChevronRight } from 'lucide-react' // add `Image` if neede
 
 const screenshots = [
   {
-    src: './screenshots/gameplay.png',
+    src: '/screenshots/gameplay.webp',
     caption: 'Watch your Bee Colony grow',
     alt: 'Main gameplay view with bees flying',
   },
   {
-    src: './screenshots/research.png',
+    src: '/screenshots/research.webp',
     caption: '75 upgrades to unlock',
     alt: 'Research with upgrades',
   },
   {
-    src: './screenshots/epic.png',
+    src: '/screenshots/epic.webp',
     caption: 'Epic upgrades for the ultimate farm',
     alt: 'Epic Research upgrades',
   },
   {
-    src: './screenshots/boosts.png',
+    src: '/screenshots/boosts.webp',
     caption: 'Many boosts to increase production',
     alt: 'Boosts to power your farm',
   },
   {
-    src: './screenshots/vehicles.png',
+    src: '/screenshots/vehicles.webp',
     caption: 'Scale your shipping fleet',
     alt: 'Vehicle fleet at depot',
   },
   {
-    src: './screenshots/rewards.png',
+    src: '/screenshots/rewards.webp',
     caption: 'Get rewards to keep you going',
     alt: 'Rewards panel',
   },
   {
-    src: './screenshots/honey.png',
+    src: '/screenshots/honey.webp',
     caption: 'Unlock all 10 honey types',
     alt: 'New Honey Screen',
   },
@@ -134,9 +134,13 @@ export function Screenshots() {
                 </div> */}
                 
                 {/* Actual screenshot section */}
-                <img 
+                <img
                   src={screenshots[currentIndex].src}
                   alt={screenshots[currentIndex].alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={555}
+                  height={1200}
                   className="w-full h-full object-cover transition-opacity duration-500"
                 />
               </div>

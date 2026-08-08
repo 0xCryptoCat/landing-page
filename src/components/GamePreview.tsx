@@ -61,9 +61,11 @@ export function GamePreview() {
                 loop
                 muted
                 playsInline
+                preload="none"
+                poster="/screenshots/gameplay-poster.webp"
                 className="h-auto max-h-[500px] sm:max-h-[600px] max-w-full object-contain"
               >
-                <source src="./screenshots/gameplay.mp4" type="video/mp4" />
+                <source src="/screenshots/gameplay.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
