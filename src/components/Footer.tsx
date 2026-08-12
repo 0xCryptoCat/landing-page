@@ -127,6 +127,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/wiki/" className="hover:text-white transition-colors">
+                  Game Wiki &amp; Guides
+                </a>
+              </li>
+              <li>
                 <a href="/privacy.html" className="hover:text-white transition-colors">
                   Privacy Policy
                 </a>

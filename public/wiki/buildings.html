@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T35WH8HRY8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T35WH8HRY8');
+  </script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/bee.svg" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <title>Buildings and Upgrades — Honey, Inc. Wiki</title>
+  <meta name="description" content="Honey, Inc. buildings explained: Bee Colony upgrade levels, the honey extractor capacity and speed tracks, the Shipping Depot, Research Lab and upgrade order." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://honeyinc.app/wiki/buildings.html" />
+  <meta name="theme-color" content="#FFC107" />
+  <meta property="og:title" content="Buildings and Upgrades — Honey, Inc. Wiki" />
+  <meta property="og:description" content="Honey, Inc. buildings explained: Bee Colony upgrade levels, the honey extractor capacity and speed tracks, the Shipping Depot, Research Lab and upgrade order." />
+  <meta property="og:image" content="https://honeyinc.app/social-preview.png" />
+  <meta property="og:url" content="https://honeyinc.app/wiki/buildings.html" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/wiki/wiki.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="page">
+      <a class="brand" href="/">Honey, Inc.</a>
+      <a href="/wiki/">Wiki</a>
+      <a href="/wiki/how-to-play.html">How to play</a>
+      <a href="https://apps.apple.com/app/id6763545984">iOS</a>
+      <a href="https://play.google.com/store/apps/details?id=com.honeyinc.app">Android</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <p class="crumb"><a href="/">Home</a> › <a href="/wiki/">Wiki</a> › Buildings</p>
+    <h1>Honey, Inc. buildings</h1>
+    <p class="lede">The four structures on your farm — Bee Colony, Honey Extractor, Shipping Depot and Research Lab — with their real level tracks, their ceilings, and honest advice on which one to upgrade next.</p>
+
+    <p>Honey, Inc. buildings are the four permanent structures that decide how much honey your farm makes, how much of it you can hold, how quickly it turns into cash, and how much your research is worth. Every Bee Colony upgrade, every honey extractor level and every depot level is bought outright with cash and applies straight away — there is nothing to research or wait for first. This page lists what each building actually scales, the numbers behind the levels, and the reasoning behind a sensible upgrade order.</p>
+
+    <p>The four buildings form a chain. Bees produce honey, the extractor stores and processes it, the depot ships it for money, and the lab multiplies what your research contributes to all of it. Because it is a chain, the building worth upgrading is almost always whichever one is currently holding the others up — not whichever one has the biggest number attached to it.</p>
+
+    <h2>The four buildings at a glance</h2>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Building</th>
+            <th class="num">Levels</th>
+            <th>What it scales</th>
+            <th>Ceiling at max</th>
+            <th>What it gates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bee Colony</td>
+            <td class="num">12</td>
+            <td>Honey produced per bee</td>
+            <td>133.4&times; efficiency</td>
+            <td>Raw output — everything downstream starts here</td>
+          </tr>
+          <tr>
+            <td>Storage (Honey Extractor)</td>
+            <td class="num">12</td>
+            <td>Storage capacity and processing speed</td>
+            <td>4,095&times; capacity</td>
+            <td>How much honey the farm can hold at once</td>
+          </tr>
+          <tr>
+            <td>Shipping Depot</td>
+            <td class="num">12</td>
+            <td>Shipping rate</td>
+            <td>243.8&times; shipping</td>
+            <td>How fast honey becomes cash; houses the vehicle fleet</td>
+          </tr>
+          <tr>
+            <td>Research Lab</td>
+            <td class="num">6</td>
+            <td>Research multiplier</td>
+            <td>10&times;</td>
+            <td>How much every research upgrade is worth</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Bee Colony</h2>
+
+    <p>The Bee Colony sets honey produced per bee. The base rate is 0.5 honey per bee, and the building has twelve levels. Because the effect is per bee, it multiplies against however many bees you are running, which makes it the one building that interacts directly with the <a href="/wiki/bees.html">bee capacity and refill upgrades</a> and with how many <a href="/wiki/hives.html">hives</a> you have placed. A colony upgrade on a farm with 50 bees and the same upgrade on a farm with 500 bees are not the same purchase.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="num">Level</th>
+            <th class="num">Honey per bee</th>
+            <th class="num">Multiple of base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1 (base)</td><td class="num">0.5</td><td class="num">1.0&times;</td></tr>
+          <tr><td class="num">2</td><td class="num">0.8</td><td class="num">1.6&times;</td></tr>
+          <tr><td class="num">3</td><td class="num">1.2</td><td class="num">2.4&times;</td></tr>
+          <tr><td class="num">4</td><td class="num">1.8</td><td class="num">3.6&times;</td></tr>
+          <tr><td class="num">5</td><td class="num">2.7</td><td class="num">5.4&times;</td></tr>
+          <tr><td class="num">6</td><td class="num">4.0</td><td class="num">8.0&times;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The remaining six levels continue the same climb. At maximum level the colony's efficiency multiplier reaches <strong>133.4&times;</strong> the starting rate. The "multiple of base" column above is simply each level's rate divided by the 0.5 starting rate, included so the shape of the curve is visible: growth is steady rather than explosive, which is why colony levels alone rarely fix a stalled farm.</p>
+
+    <h2>Storage — the Honey Extractor</h2>
+
+    <p>Storage starts at a capacity of 100 and runs to twelve levels, where the capacity multiplier reaches <strong>4,095&times;</strong>. That is by far the largest ceiling of the four buildings, and it is the reason storage is easy to misjudge: a big capacity number does not create honey, it only stops you from running out of room for it. Capacity is a ceiling, not a rate.</p>
+
+    <p>The same building carries a processing speed track, which is fully listed below.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="num">Level</th>
+            <th class="num">Processing speed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="num">1</td></tr>
+          <tr><td class="num">2</td><td class="num">1.5</td></tr>
+          <tr><td class="num">3</td><td class="num">2</td></tr>
+          <tr><td class="num">4</td><td class="num">3</td></tr>
+          <tr><td class="num">5</td><td class="num">5</td></tr>
+          <tr><td class="num">6</td><td class="num">8</td></tr>
+          <tr><td class="num">7</td><td class="num">13</td></tr>
+          <tr><td class="num">8</td><td class="num">21</td></tr>
+          <tr><td class="num">9</td><td class="num">34</td></tr>
+          <tr><td class="num">10</td><td class="num">55</td></tr>
+          <tr><td class="num">11</td><td class="num">89</td></tr>
+          <tr><td class="num">12</td><td class="num">144</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <p><strong>Two effects, one building.</strong> Capacity and processing speed both live on the extractor, so a single upgrade buys headroom and throughput at the same time. That double effect is why storage tends to feel better than its cost suggests, particularly on a farm that is left running while you are away — see <a href="/wiki/offline-progress.html">offline progress</a> for how time away is handled.</p>
+    </div>
+
+    <h2>Shipping Depot</h2>
+
+    <p>The Shipping Depot converts stored honey into cash. Its base shipping rate is 1 and it has twelve levels, with the shipping multiplier reaching <strong>243.8&times;</strong> at the top. It also houses your fleet: all twelve <a href="/wiki/vehicles.html">vehicles</a>, from the Base Cart carrying 17 per trip up to the Hexaloop Tanker at 16,666,667, are unlocked through depot level rather than bought on their own screen.</p>
+
+    <p>That makes the depot the only building with two distinct payoffs. The multiplier improves shipping directly, and the level unlock puts a larger vehicle on the road. If honey is piling up in storage faster than it leaves, the depot — not the colony — is the building that is behind.</p>
+
+    <h2>Research Lab</h2>
+
+    <p>The Research Lab is the odd one out: six levels rather than twelve, and it produces nothing by itself. It applies a multiplier to research, running 1 &rarr; 1.6 &rarr; 2.5 &rarr; 4 &rarr; 6.5 &rarr; <strong>10&times;</strong>. Each level has an unlock threshold you must reach before it becomes available.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="num">Lab level</th>
+            <th class="num">Research multiplier</th>
+            <th class="num">Unlock threshold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="num">1&times;</td><td class="num">0</td></tr>
+          <tr><td class="num">2</td><td class="num">1.6&times;</td><td class="num">1,000</td></tr>
+          <tr><td class="num">3</td><td class="num">2.5&times;</td><td class="num">10,000</td></tr>
+          <tr><td class="num">4</td><td class="num">4&times;</td><td class="num">100,000</td></tr>
+          <tr><td class="num">5</td><td class="num">6.5&times;</td><td class="num">1,000,000</td></tr>
+          <tr><td class="num">6</td><td class="num">10&times;</td><td class="num">10,000,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Because the lab multiplies research rather than production, its value depends entirely on how much research you have bought. The <a href="/wiki/research.html">regular research tree</a> runs to 13 tiers and 57 distinct upgrade groups, so a player deep into that tree gets far more out of a lab level than someone who has barely started it. The <a href="/wiki/epic-research.html">18 epic research upgrades</a> are a separate track bought with <a href="/wiki/honeycombs.html">Honeycombs</a>, and they survive reincarnation.</p>
+
+    <h2>Which building should you upgrade first</h2>
+
+    <p>The honest answer is that the four ceilings are not comparable. Storage tops out at 4,095&times; and the colony at 133.4&times;, but those multiply completely different quantities — capacity against production — so picking the biggest number is the wrong instinct. What works is watching where the farm stalls:</p>
+
+    <ul>
+      <li><strong>Storage sits full for long stretches.</strong> Production is outrunning your ability to hold or move honey. Upgrade the extractor, the depot, or both.</li>
+      <li><strong>Storage sits near empty and the depot has nothing to move.</strong> The bottleneck is upstream. Buy Bee Colony levels, more bee capacity, or another hive.</li>
+      <li><strong>Both look healthy but income is flat.</strong> This is when the Research Lab and the research tree earn their keep, because they scale the whole chain rather than one link in it.</li>
+    </ul>
+
+    <p>Early on, keeping the colony, extractor and depot roughly in step is more effective than pushing any one of them far ahead. The chain only runs as fast as its slowest link, and a maxed extractor on a farm with 50 bees is storage you will never fill.</p>
+
+    <div class="note">
+      <p><strong>Buildings reset, some progress does not.</strong> Building levels are part of the farm, so <a href="/wiki/reincarnation.html">reincarnation</a> clears them in exchange for <a href="/wiki/royal-jelly.html">Royal Jellies</a>, while epic research and Honeycombs carry over. Switching to a new entry in the <a href="/wiki/honey-types.html">honey type</a> list also starts a fresh farm at that type's base value — a mid-game reset rather than a straight upgrade.</p>
+    </div>
+
+    <h2>How buildings fit the wider farm</h2>
+
+    <p>Building levels are one of the main things that move your <a href="/wiki/farm-value.html">farm value</a>, which is the measure the game uses in place of a player level, and which gates the honey types you can unlock. They also interact with the temporary <a href="/wiki/boosts.html">boosts</a> you buy or win, and with the cash and Honeycombs you pick up from <a href="/wiki/wasps.html">wasps</a> flying across the farm. If you are still finding your feet, the <a href="/wiki/beginner-tips.html">beginner tips</a> page covers the first hour, and <a href="/wiki/how-to-play.html">how to play</a> covers the loop as a whole.</p>
+
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com/app/id6763545984">Download on iOS</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.honeyinc.app">Get it on Android</a>
+    </div>
+
+    <nav class="related">
+      <h2>Related pages</h2>
+      <ul>
+        <li><a href="/wiki/vehicles.html">Vehicles and the fleet</a></li>
+        <li><a href="/wiki/bees.html">Bees</a></li>
+        <li><a href="/wiki/hives.html">Hives</a></li>
+        <li><a href="/wiki/research.html">Research</a></li>
+        <li><a href="/wiki/farm-value.html">Farm value and SoP tiers</a></li>
+        <li><a href="/wiki/honey-types.html">Honey types</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <footer class="page">
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/wiki/">Wiki</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://t.me/honeyincbot/play">Telegram</a>
+      <a href="mailto:becomethehive@gmail.com">Contact</a>
+    </div>
+    <p>© 2026 Honey, Inc. — an idle bee farm game for iOS and Android.</p>
+  </footer>
+</body>
+</html>

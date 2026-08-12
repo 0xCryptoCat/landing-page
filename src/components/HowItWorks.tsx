@@ -154,6 +154,27 @@ export function HowItWorks() {
             </div>
           </div>
         </div>
+
+        {/* Entry point into the wiki. Also the homepage's only crawl path to
+            /wiki/ — without an in-content link the guides would be reachable
+            solely via the sitemap, which is a far weaker discovery signal. */}
+        <p className="mt-14 text-center text-amber-700">
+          Want the detail?{' '}
+          <a
+            href="/wiki/how-to-play.html"
+            className="font-bold text-amber-800 underline decoration-2 underline-offset-4 hover:text-amber-900 transition-colors"
+          >
+            Read the full how-to-play guide
+          </a>{' '}
+          or browse the{' '}
+          <a
+            href="/wiki/"
+            className="font-bold text-amber-800 underline decoration-2 underline-offset-4 hover:text-amber-900 transition-colors"
+          >
+            game wiki
+          </a>
+          .
+        </p>
       </div>
     </section>
   )
