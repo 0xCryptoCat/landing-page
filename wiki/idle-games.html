@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T35WH8HRY8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T35WH8HRY8');
+  </script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/bee.svg" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <title>What Is an Idle Game? — Honey, Inc. Wiki</title>
+  <meta name="description" content="What is an idle game? A plain explainer of the incremental and idle tycoon genre: the loop, offline progress, prestige resets, and where Honey, Inc. fits in." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://honeyinc.app/wiki/idle-games.html" />
+  <meta name="theme-color" content="#FFC107" />
+  <meta property="og:title" content="What Is an Idle Game? — Honey, Inc. Wiki" />
+  <meta property="og:description" content="What is an idle game? A plain explainer of the incremental and idle tycoon genre: the loop, offline progress, prestige resets, and where Honey, Inc. fits in." />
+  <meta property="og:image" content="https://honeyinc.app/social-preview.png" />
+  <meta property="og:url" content="https://honeyinc.app/wiki/idle-games.html" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/wiki/wiki.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="page">
+      <a class="brand" href="/">Honey, Inc.</a>
+      <a href="/wiki/">Wiki</a>
+      <a href="/wiki/how-to-play.html">How to play</a>
+      <a href="https://apps.apple.com/app/id6763545984">iOS</a>
+      <a href="https://play.google.com/store/apps/details?id=com.honeyinc.app">Android</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <p class="crumb"><a href="/">Home</a> › <a href="/wiki/">Wiki</a> › Idle games</p>
+    <h1>What Is an Idle Game?</h1>
+    <p class="lede">An honest explainer of the idle and incremental genre — how the loop works, why offline progress and prestige resets exist, and how a game like Honey, Inc. is built on top of those conventions.</p>
+
+    <p>An idle game is a game that keeps producing something for you when you are not touching it. You set up a system that generates a resource over time, spend that resource to make the system generate faster, and repeat. The genre is also called <strong>incremental</strong>, and when the theme is business or industry, an <strong>idle tycoon game</strong>. If you have never played one, the concept sounds like it should be boring. It usually is not, and the reason is worth explaining properly.</p>
+
+    <h2>Where the genre came from</h2>
+
+    <p>Idle games grew out of browser clickers in the early 2010s — Cookie Clicker is the one most people name — where the joke was that you clicked a button to make cookies, then bought things that made cookies without clicking. The joke turned out to describe something people genuinely enjoyed: watching a system you built get visibly better at running itself.</p>
+
+    <p>The vocabulary settled down over the following decade. It is worth knowing, because every game in the genre uses it and almost none of them define it.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Term</th><th>What it means</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Idle / incremental</td><td>The umbrella genre. Resources accumulate over time; you spend them on things that raise the rate.</td></tr>
+          <tr><td>Clicker</td><td>An idle game where tapping directly produces resources, at least early on.</td></tr>
+          <tr><td>Idle tycoon</td><td>An idle game themed around a business — a farm, a factory, a restaurant chain.</td></tr>
+          <tr><td>Prestige / reset</td><td>Voluntarily wiping your progress in exchange for a permanent bonus that makes the next run faster.</td></tr>
+          <tr><td>Offline progress</td><td>Production that is credited to you for time spent with the app closed.</td></tr>
+          <tr><td>Wall</td><td>The point where the next upgrade costs so much that progress feels stopped.</td></tr>
+          <tr><td>Automation</td><td>Systems that perform an action you used to perform by hand.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The loop, and why the numbers get absurd</h2>
+
+    <p>Every idle game runs on the same skeleton: a producer makes a resource, the resource buys upgrades, the upgrades raise production. What makes it feel like progress rather than a treadmill is the maths underneath. Production tends to grow multiplicatively — each upgrade is a multiplier on top of previous multipliers — while your sense of scale grows arithmetically. Ten multipliers of 2× is not twenty times better, it is a thousand times better, and you feel that gap.</p>
+
+    <p>That is why idle games end up with numbers no other genre uses. Within a few hours you are reading quadrillions; within a few days, notation most people last saw in a science class. The big numbers are not decoration. They are the direct consequence of a design where every purchase multiplies rather than adds.</p>
+
+    <p>The counterweight is that costs also grow exponentially, usually faster than income. That tension is the actual game. Deciding <em>which</em> multiplier to buy next, when the obvious one is the expensive one, is where the strategy lives.</p>
+
+    <h2>Why offline progress matters</h2>
+
+    <p>Offline progress is the design choice that separates the genre from most mobile games, and it is a genuinely player-friendly one.</p>
+
+    <p>A lot of free-to-play design is built to punish absence: your crops wilt, your energy caps, your streak breaks. Idle games invert that. They assume you will close the app and reward you for coming back, because the fiction is that your system runs itself. Practically, that means a session can be two minutes long — check what accumulated, spend it, close the app — and still be a complete, satisfying interaction.</p>
+
+    <p>Most idle games cap how much offline time they credit, and that cap is one of the most important numbers in any given game. An uncapped game would play itself entirely. A game with a very short cap is quietly demanding you check in constantly. Where the cap sits, and how you extend it, tells you a lot about how a game expects to be played.</p>
+
+    <h2>Prestige: the genre's answer to the wall</h2>
+
+    <p>Sooner or later every idle game slows to a crawl. The next upgrade costs more than you can earn in a reasonable session. This is not a failure of the design — it is the setup for the genre's most distinctive mechanic.</p>
+
+    <p>Prestige means voluntarily throwing your progress away. You reset your farm, factory or empire back to nothing, and in exchange you keep a permanent bonus scaled to how far you got. The second run then covers in an hour what took the first run a day. Newcomers often find this genuinely upsetting the first time they read about it — deleting your own save sounds like a punishment. In practice it is how the genre delivers its biggest sense of acceleration, and a well-designed prestige system makes the reset feel like a reward rather than a loss.</p>
+
+    <div class="note">
+      <p><strong>A good rule for judging any idle game:</strong> look at what survives the reset. If a prestige gives you nothing but a small percentage bonus, later runs feel like reruns. If it carries over permanent upgrades, unlocked systems, or a currency you keep, the game has somewhere to go.</p>
+    </div>
+
+    <h2>How Honey, Inc. fits the genre</h2>
+
+    <p>Honey, Inc. is an idle tycoon game about running a bee farm, and it maps onto every convention above. The production chain is bees, honey, storage, shipping, cash — bees fly out and make honey, the extractor stores it, the depot's vehicles ship it, and the cash buys upgrades that widen each link. The full walkthrough is on the <a href="/wiki/how-to-play.html">how to play</a> page; here is how the genre pieces line up.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Genre convention</th><th>In Honey, Inc.</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Producer</td><td><a href="/wiki/bees.html">Bees</a> spawned from up to four hives</td></tr>
+          <tr><td>Resource → currency</td><td>Honey shipped by <a href="/wiki/vehicles.html">vehicles</a> for cash</td></tr>
+          <tr><td>Multiplier upgrades</td><td>Four <a href="/wiki/buildings.html">buildings</a> and 57 groups of <a href="/wiki/research.html">research</a></td></tr>
+          <tr><td>Progression metric</td><td><a href="/wiki/farm-value.html">Farm Value</a>, not XP or a player level</td></tr>
+          <tr><td>Prestige</td><td><a href="/wiki/reincarnation.html">Reincarnation</a>, paying out Royal Jellies</td></tr>
+          <tr><td>Offline cap</td><td>2 hours base, extendable</td></tr>
+          <tr><td>Active layer</td><td>Tapping <a href="/wiki/wasps.html">wasps</a> as they cross the farm</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Its offline window</h3>
+
+    <p>The base <a href="/wiki/offline-progress.html">offline window</a> is 2 hours, and each honey jar you hold adds one more hour of stored offline time — so the cap is something you build up rather than a fixed limit. Bees work at 80% efficiency while you are away, but 100% of the honey they produce is retained, and you get a summary of what happened when you open the app.</p>
+
+    <h3>Its prestige layer</h3>
+
+    <p>Reincarnation is the reset. It requires reaching honey tier 4 (Acacia Honey) and earning at least 25,000,000 on the current run, and it pays out <a href="/wiki/royal-jelly.html">Royal Jellies</a> — each worth a permanent +1.2% earnings bonus, capped at +25%. By the rule above, the interesting part is not the percentage: it is that your Honeycombs and all 18 <a href="/wiki/epic-research.html">epic research</a> upgrades survive the reset. Those are what make the next cycle materially different rather than merely faster.</p>
+
+    <h3>Its long arc</h3>
+
+    <p>The genre usually needs one axis of progression that outlasts everything else. Here it is the ten <a href="/wiki/honey-types.html">honey types</a>, from Basic Honey at base value 2 up to Temporal Honey at 18,000,000. Each is gated behind a farm value threshold, and switching to a new one starts a fresh farm at that type's base value — a mid-game reset layered on top of the prestige reset. It is the same idea as prestige applied at a different scale.</p>
+
+    <h2>If this is your first idle game</h2>
+
+    <p>Three habits make the genre click faster. First, do not hoard currency — in a game built on compounding, money sitting in your balance is doing nothing. Second, expect to feel stuck periodically; that feeling is usually a signal that a reset mechanic has opened up rather than a sign you played badly. Third, check in briefly and often rather than grinding long sessions, because the system is doing the work either way.</p>
+
+    <p>Our <a href="/wiki/beginner-tips.html">beginner tips</a> page turns those instincts into specific spending order for Honey, Inc., and the <a href="/wiki/faq.html">FAQ</a> covers the questions people ask in their first week.</p>
+
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com/app/id6763545984">Download on iOS</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.honeyinc.app">Get it on Android</a>
+    </div>
+
+    <nav class="related">
+      <h2>Related pages</h2>
+      <ul>
+        <li><a href="/wiki/how-to-play.html">How to play</a></li>
+        <li><a href="/wiki/beginner-tips.html">Beginner tips</a></li>
+        <li><a href="/wiki/offline-progress.html">Offline progress</a></li>
+        <li><a href="/wiki/reincarnation.html">Reincarnation</a></li>
+        <li><a href="/wiki/royal-jelly.html">Royal Jelly</a></li>
+        <li><a href="/wiki/honey-types.html">Honey types</a></li>
+        <li><a href="/wiki/farm-value.html">Farm value</a></li>
+        <li><a href="/wiki/faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <footer class="page">
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/wiki/">Wiki</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://t.me/honeyincbot/play">Telegram</a>
+      <a href="mailto:becomethehive@gmail.com">Contact</a>
+    </div>
+    <p>© 2026 Honey, Inc. — an idle bee farm game for iOS and Android.</p>
+  </footer>
+</body>
+</html>
