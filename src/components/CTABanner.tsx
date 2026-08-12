@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { PLAY_STORE_URL, TELEGRAM_PLAY_URL, TESTFLIGHT_URL } from '../links'
+import { APP_STORE_URL, PLAY_STORE_URL, TELEGRAM_PLAY_URL } from '../links'
+import { AppleGlyph, GooglePlayGlyph, TelegramPlaneIcon } from './BrandIcons'
 
 export function CTABanner() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -54,7 +55,7 @@ export function CTABanner() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Free to play on Android, iOS beta, or right inside Telegram.
+          Free to play on iOS and Android — or right inside Telegram.
         </p>
 
         {/* CTA Button */}
@@ -63,38 +64,49 @@ export function CTABanner() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <a
-            href={TELEGRAM_PLAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gradient-to-bl from-blue-300 to-telegram text-white font-bold text-xl px-10 py-5 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cta-pulse"
-          >
-            <div className="w-7 h-7">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-                <path fillRule="evenodd" clipRule="evenodd" fill="#FFFFFF" d="M54.3,118.8c35-15.2,58.3-25.3,70-30.2 c33.3-13.9,40.3-16.3,44.8-16.4c1,0,3.2,0.2,4.7,1.4c1.2,1,1.5,2.3,1.7,3.3s0.4,3.1,0.2,4.7c-1.8,19-9.6,65.1-13.6,86.3 c-1.7,9-5,12-8.2,12.3c-7,0.6-12.3-4.6-19-9c-10.6-6.9-16.5-11.2-26.8-18c-11.9-7.8-4.2-12.1,2.6-19.1c1.8-1.8,32.5-29.8,33.1-32.3 c0.1-0.3,0.1-1.5-0.6-2.1c-0.7-0.6-1.7-0.4-2.5-0.2c-1.1,0.2-17.9,11.4-50.6,33.5c-4.8,3.3-9.1,4.9-13,4.8 c-4.3-0.1-12.5-2.4-18.7-4.4c-7.5-2.4-13.5-3.7-13-7.9C45.7,123.3,48.7,121.1,54.3,118.8z"/>
-              </svg>
-            </div>
-            Play Now
-          </a>
+          {/* The two stores are the ask. Telegram sits alongside as a third,
+              lighter-weight route rather than the headline button it used to
+              be — it is the no-download fallback, not the destination. */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-3 bg-black text-white font-bold text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-100 transition-all duration-300"
+            >
+              <AppleGlyph />
+              <span className="text-left leading-tight">
+                <span className="block text-[10px] uppercase tracking-wide text-white/70 font-semibold">Download on the</span>
+                <span className="block text-lg font-bold -mt-0.5">App Store</span>
+              </span>
+            </a>
 
-          {/* Store routes, secondary to the zero-friction Telegram entry point. */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-amber-900/80">
             <a
               href={PLAY_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold underline decoration-2 underline-offset-4 hover:text-amber-950 transition-colors"
+              className="group inline-flex items-center justify-center gap-3 bg-black text-white font-bold text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-100 transition-all duration-300"
             >
-              Get it on Google Play
+              <GooglePlayGlyph />
+              <span className="text-left leading-tight">
+                <span className="block text-[10px] uppercase tracking-wide text-white/70 font-semibold">Get it on</span>
+                <span className="block text-lg font-bold -mt-0.5">Google Play</span>
+              </span>
             </a>
+          </div>
+
+          {/* Third route — Telegram, no download. */}
+          <div className="mt-5">
             <a
-              href={TESTFLIGHT_URL}
+              href={TELEGRAM_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold underline decoration-2 underline-offset-4 hover:text-amber-950 transition-colors"
+              className="inline-flex items-center gap-2.5 bg-telegram text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-100 transition-all duration-300"
             >
-              Join the iOS beta
+              <TelegramPlaneIcon className="w-5 h-5" />
+              Play on Telegram
             </a>
+            <p className="mt-2 text-sm text-amber-900/70">No download needed.</p>
           </div>
         </div>
       </div>

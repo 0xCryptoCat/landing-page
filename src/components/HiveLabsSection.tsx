@@ -36,7 +36,7 @@ const PANELS: Panel[] = [
   },
   {
     id: 'invest',
-    tab: 'Invest in Honey',
+    tab: 'Invest in us',
     eyebrow: 'Investor relations',
     live: true,
     title: (

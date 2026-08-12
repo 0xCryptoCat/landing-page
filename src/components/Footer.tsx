@@ -1,14 +1,21 @@
 import { useState } from 'react'
-import { Send, Twitter, Youtube, Music2, Users, Loader2, Check } from 'lucide-react'
+import { Loader2, Check } from 'lucide-react'
+import { TelegramIcon, XIcon, YouTubeIcon } from './BrandIcons'
+import {
+  APP_STORE_URL,
+  PLAY_STORE_URL,
+  TELEGRAM_COMMUNITY_URL,
+  TELEGRAM_PLAY_URL,
+  X_URL,
+  YOUTUBE_URL,
+} from '../links'
 
 // Only accounts with a real url are rendered — an icon that links to "#" reads
 // as a broken site. Fill a url in here and the icon appears.
 const SOCIALS = [
-  { label: 'Telegram', url: 'https://t.me/honeyinc', Icon: Send, hover: 'hover:bg-telegram' },
-  { label: 'Community', url: 'https://t.me/theHiveGoop', Icon: Users, hover: 'hover:bg-telegram' },
-  { label: 'X', url: '', Icon: Twitter, hover: 'hover:bg-gray-800' },
-  { label: 'YouTube', url: '', Icon: Youtube, hover: 'hover:bg-red-600' },
-  { label: 'TikTok', url: '', Icon: Music2, hover: 'hover:bg-gray-800' },
+  { label: 'Telegram', url: TELEGRAM_COMMUNITY_URL, Icon: TelegramIcon, hover: 'hover:bg-telegram' },
+  { label: 'X', url: X_URL, Icon: XIcon, hover: 'hover:bg-black' },
+  { label: 'YouTube', url: YOUTUBE_URL, Icon: YouTubeIcon, hover: 'hover:bg-red-600' },
 ].filter((s) => s.url)
 
 // Supabase edge function URL
@@ -81,17 +88,37 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://t.me/honeyincbot"
+                  href={APP_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  Play Game
+                  Download for iOS
                 </a>
               </li>
               <li>
                 <a
-                  href="https://t.me/theHiveGoop"
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Download for Android
+                </a>
+              </li>
+              <li>
+                <a
+                  href={TELEGRAM_PLAY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Play on Telegram
+                </a>
+              </li>
+              <li>
+                <a
+                  href={TELEGRAM_COMMUNITY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
@@ -178,7 +205,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-amber-800 pt-8 text-center text-amber-500 text-sm">
-          <p>© 2025 Honey, Inc. All rights reserved.</p>
+          <p>© 2026 Honey, Inc. All rights reserved.</p>
           <p className="mt-1">Made with Buzz by the Hive Team</p>
         </div>
       </div>

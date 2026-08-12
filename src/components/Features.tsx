@@ -56,7 +56,7 @@ const features: Feature[] = [
   {
     variant: 'wax',
     title: 'Play Anywhere',
-    description: 'Android, the iOS beta, or straight inside Telegram with no download. Your farm keeps producing while you are away.',
+    description: 'iOS, Android, or straight inside Telegram with no download. Your farm keeps producing while you are away.',
   },
   {
     art: 'honeycomb.svg',
